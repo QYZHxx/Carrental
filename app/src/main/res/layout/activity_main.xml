@@ -1,11 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
 
-    <TextView android:text="Hello World!" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-</RelativeLayout>
+    <FrameLayout
+        android:id="@+id/main_content"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1.5px"
+        android:background="#a09a9a"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:id="@+id/main_tv_loopup"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:text="找车"
+            android:drawablePadding="3dp"
+            android:padding="5dp"
+            android:textColor="@drawable/tab_menu_text"
+            android:drawableTop="@drawable/tab_menu_lookup_ic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/main_tv_trip"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:text="行程"
+            android:drawablePadding="3dp"
+            android:padding="5dp"
+            android:textColor="@drawable/tab_menu_text"
+            android:drawableTop="@drawable/tab_menu_trip_ic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/main_tv_carowner"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:text="车主"
+            android:drawablePadding="3dp"
+            android:padding="5dp"
+            android:textColor="@drawable/tab_menu_text"
+            android:drawableTop="@drawable/tab_menu_carowner_ic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/main_tv_my"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:text="我的"
+            android:drawablePadding="3dp"
+            android:padding="5dp"
+            android:textColor="@drawable/tab_menu_text"
+            android:drawableTop="@drawable/tab_menu_my_ic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>
