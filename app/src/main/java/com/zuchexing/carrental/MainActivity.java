@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void initView() {
         tv_carowner = (TextView) findViewById(R.id.main_tv_carowner);
-        tv_lookup = (TextView) findViewById(R.id.main_tv_loopup);
+        tv_lookup = (TextView) findViewById(R.id.main_tv_lookup);
         tv_my = (TextView) findViewById(R.id.main_tv_my);
         tv_trip = (TextView) findViewById(R.id.main_tv_trip);
 
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         hideAllFragmet(transaction);
         resetTextView();
         switch (v.getId()) {
-            case R.id.main_tv_loopup:
+            case R.id.main_tv_lookup:
                 tv_lookup.setSelected(true);
                 if (fragment1 == null) {
                     fragment1 = new LookUpFragment();

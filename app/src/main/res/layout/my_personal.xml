@@ -32,22 +32,7 @@
             android:layout_height="33dp"
             android:layout_marginTop="38dp"
             android:background="#ffffff">
-            <ImageView
-                android:clickable="true"
-                android:layout_width="95dp"
-                android:layout_height="34dp"
-                android:layout_marginLeft="45dp"
-                android:id="@+id/img_register"
-                android:src="@drawable/my_frag_register"
-                />
-            <ImageView
-                android:clickable="true"
-                android:layout_width="95dp"
-                android:layout_height="34dp"
-                android:layout_marginLeft="88dp"
-                android:id="@+id/img_registered"
-                android:src="@drawable/my_frag_registered"
-                />
+
         </LinearLayout>
     </LinearLayout>
 
@@ -79,14 +64,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="服务中心"
+                    android:text="紧急联系方式"
                     android:textSize="15dp"
                     android:layout_marginTop="14dp"
                     android:id="@+id/textView" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="疑难问题,客服热线"
+                    android:text="免费拿10元"
                     android:textSize="12dp"
                     android:layout_marginTop="13dp"
                     android:layout_marginLeft="160dp"
@@ -103,7 +88,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="保险保障"
+                    android:text="账户绑定"
                     android:textSize="15dp"
                     android:layout_marginTop="14dp"
                     android:id="@+id/textView2" />
@@ -118,7 +103,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="用户协议"
+                    android:text="驾驶行为"
                     android:textSize="15dp"
                     android:layout_marginTop="14dp"
                     android:id="@+id/textView3" />
