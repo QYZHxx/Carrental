@@ -13,6 +13,8 @@ import com.zuchexing.carrental.lookup.LookUpFragment;
 import com.zuchexing.carrental.my.MyFragment;
 import com.zuchexing.carrental.trip.TripFragment;
 
+import cn.bmob.v3.Bmob;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {//主页面
 
     private TextView tv_carowner, tv_lookup, tv_my, tv_trip;
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void initView() {
+        Bmob.initialize(this, "ccb2e44ea27ebc4c5e9902d40231de9e");
         tv_carowner = (TextView) findViewById(R.id.main_tv_carowner);
         tv_lookup = (TextView) findViewById(R.id.main_tv_lookup);
         tv_my = (TextView) findViewById(R.id.main_tv_my);
