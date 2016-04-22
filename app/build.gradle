@@ -34,12 +34,12 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.0.1'
     compile files('libs/AMap_3DMap_V3.3.0_20160331.jar')
     compile files('libs/AMap_Location_V2.4.0_20160308.jar')
-    compile files('libs/BmobSDK_V3.4.6_0415.jar')
-    compile files('libs/BmobSMS_V1.0.1_20150710.jar')
-    compile 'com.android.support:support-v4:23.0.1'
+    compile files('libs/BmobSDK_V3.4.6_0413.jar')
+    compile files('libs/okhttp-2.4.0.jar')
+    compile files('libs/okio-1.4.0.jar')
 }

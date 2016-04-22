@@ -10,10 +10,18 @@
         android:layout_height="wrap_content"
         android:text="找车页面" />
 
+    <FrameLayout
+        android:id="@+id/advert_frag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
    <Button
        android:id="@+id/btn_map_search"
        android:text="找车"
        android:layout_width="match_parent"
        android:layout_height="wrap_content" />
-
+    <Button
+        android:text="查询"
+        android:id="@+id/lookup_btn_cx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>
