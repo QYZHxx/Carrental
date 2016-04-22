@@ -7,4 +7,7 @@
     android:id="@+id/zdy_finding_car"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"/>
+    <com.zuchexing.carrental.customlayout.CarListview
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>

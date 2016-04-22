@@ -29,7 +29,7 @@ public class TitleLayout extends LinearLayout implements View.OnClickListener {
         super(context, attrs);
         this.context=context;
         activity=(Activity)context;
-        LayoutInflater.from(context).inflate(R.layout.custom_titlelayout, this);
+        LayoutInflater.from(context).inflate(R.layout.zdy_titlet, this);
         img_return=(ImageView)findViewById(R.id.btn_title_return);
         img_skip_serve=(ImageView)findViewById(R.id.btn_skip_serve);
         img_collate=(ImageView)findViewById(R.id.btn_collate);
