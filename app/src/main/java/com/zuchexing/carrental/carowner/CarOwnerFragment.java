@@ -8,9 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
-import com.zuchexing.carrental.MainActivity;
 import com.zuchexing.carrental.R;
 
 /**
@@ -28,6 +26,7 @@ public class CarOwnerFragment extends Fragment implements View.OnClickListener {
 
         super.onAttach(context);
         this.context=context;
+        super.onAttach(context);
     }
 
     @Nullable

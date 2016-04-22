@@ -50,6 +50,7 @@
         <activity android:name=".my.MyRegister"/>
         <activity android:name=".my.MyPersonal"/>
         <activity android:name=".my.MyInformation"/>
+        <activity android:name=".lookup.FindingCar"/>
     </application>
 
 </manifest>
