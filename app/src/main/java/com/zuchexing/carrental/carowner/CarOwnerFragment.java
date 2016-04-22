@@ -25,6 +25,8 @@ public class CarOwnerFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onAttach(Context context) {
+
+        super.onAttach(context);
         this.context=context;
     }
 

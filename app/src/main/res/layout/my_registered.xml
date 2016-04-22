@@ -88,13 +88,20 @@
         android:layout_marginTop="1dp"
         android:background="#ffffff" />
 
-
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="请设置密码"
+        android:id="@+id/edt_szmi"
+        android:layout_marginTop="1dp"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:background="#ffffff" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="提交"
-        android:id="@+id/submit"
         android:layout_margin="20dp"
         android:layout_gravity="center_horizontal"
         android:background="#fe2701"
@@ -103,7 +110,6 @@
         android:onClick="submit"
 
         />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

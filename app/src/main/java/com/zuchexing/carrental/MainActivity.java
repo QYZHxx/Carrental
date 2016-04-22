@@ -1,5 +1,6 @@
 package com.zuchexing.carrental;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,9 +12,12 @@ import android.widget.TextView;
 import com.zuchexing.carrental.carowner.CarOwnerFragment;
 import com.zuchexing.carrental.lookup.LookUpFragment;
 import com.zuchexing.carrental.my.MyFragment;
+import com.zuchexing.carrental.my.MyPersonal;
 import com.zuchexing.carrental.trip.TripFragment;
 
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobSMS;
+import cn.bmob.v3.BmobUser;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {//主页面
 
@@ -27,12 +31,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         manager = getSupportFragmentManager();
         initView();
-
-
     }
 
     public void initView() {
-        Bmob.initialize(this, "ccb2e44ea27ebc4c5e9902d40231de9e");
+        Bmob.initialize(this,"ccb2e44ea27ebc4c5e9902d40231de9e");
         tv_carowner = (TextView) findViewById(R.id.main_tv_carowner);
         tv_lookup = (TextView) findViewById(R.id.main_tv_lookup);
         tv_my = (TextView) findViewById(R.id.main_tv_my);
@@ -78,15 +80,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.main_tv_my:
                 tv_my.setSelected(true);
-                if (fragment4 == null) {
-                    fragment4 = new MyFragment();
-                    transaction.add(R.id.main_content, fragment4);
-                } else
-                    transaction.show(fragment4);
+                BmobUser bmobUser = BmobUser.getCurrentUser(MainActivity.this);
+                if(bmobUser != null){
+                    Intent it = new Intent(MainActivity.this, MyPersonal.class);
+                    startActivity(it);
+                }else{
+                    //缓存用户对象为空时， 可打开用户注册界面…
+                    if (fragment4 == null) {
+                        fragment4 = new MyFragment();
+                        transaction.add(R.id.main_content, fragment4);
+                    } else {
+                        transaction.show(fragment4);
+                    }
+                }
                 break;
+                }
+                transaction.commit();
         }
-        transaction.commit();
-    }
 
     //隐藏所有Fragment
     private void hideAllFragmet(FragmentTransaction transaction) {

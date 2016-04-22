@@ -12,10 +12,24 @@
         >
         <LinearLayout
             android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:layout_marginTop="20dp"
+            android:weightSum="1">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/my_more"
+                android:layout_marginLeft="320dp"
+                android:id="@+id/imageView"
+                android:layout_weight="0.12" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="83dp"
             android:layout_height="79dp"
             android:layout_gravity="center"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="34dp"
             >
             <ImageView
                 android:clickable="true"
@@ -26,14 +40,33 @@
                 android:src="@drawable/my_frag_head"
                 />
         </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="用户名"
+            android:id="@+id/textView6"
+            android:layout_gravity="center_horizontal" />
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="33dp"
-            android:layout_marginTop="38dp"
+            android:layout_marginTop="20dp"
             android:background="#ffffff">
 
         </LinearLayout>
+
+
     </LinearLayout>
 
     <LinearLayout
@@ -124,7 +157,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="100dp">
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -133,7 +166,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="平台规则"
+                    android:text="服务中心"
                     android:textSize="15dp"
                     android:layout_marginTop="14dp"
                     />
@@ -147,11 +180,41 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="关于PP租车"
+                    android:text="保险保障"
                     android:textSize="15dp"
                     android:layout_marginTop="14dp"
                     />
             </LinearLayout>
+
+
+
+            <!--<LinearLayout-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="49dp"-->
+                <!--android:layout_marginTop="2dp"-->
+                <!--android:background="#ffffff">-->
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="平台规则"-->
+                    <!--android:textSize="15dp"-->
+                    <!--android:layout_marginTop="14dp"-->
+                    <!--/>-->
+            <!--</LinearLayout>-->
+
         </LinearLayout>
+
     </LinearLayout>
+    <Button
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:text="退出登录"
+    android:textSize="15dp"
+    android:id="@+id/btn_quit"
+    android:onClick="quit"
+    android:layout_marginTop="20dp"
+    android:textColor="#ffffffff"
+    android:background="#fe2701"
+    />
 </LinearLayout>

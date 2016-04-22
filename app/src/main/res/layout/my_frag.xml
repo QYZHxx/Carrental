@@ -22,7 +22,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/img_head"
-                android:onClick="img_head"
                 android:src="@drawable/my_frag_head"
                 />
         </LinearLayout>
