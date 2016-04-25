@@ -7,13 +7,20 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.zuchexing.carrental.R;
+import com.zuchexing.carrental.bmob.MyUser;
 import com.zuchexing.carrental.map.MapSearch;
+
+import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.LogInListener;
+import cn.bmob.v3.listener.UpdateListener;
 
 /**
  * Created by 情谊纵横 on 2016/4/19.
@@ -53,6 +60,15 @@ public class LookUpFragment extends Fragment {
         cx.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                BmobUser.loginByAccount(context, "18229869277", "18229869277", new LogInListener<MyUser>() {
+
+                    @Override
+                    public void done(MyUser user, BmobException e) {
+                        if(user!=null){
+                            Log.i("smile", "用户登陆成功");
+                        }
+                    }
+                });
                 Intent it = new Intent(context, FindingCar.class);
                 startActivity(it);
 
@@ -61,6 +77,20 @@ public class LookUpFragment extends Fragment {
         btn_map_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MyUser myUser= BmobUser.getCurrentUser(context,MyUser.class);
+                myUser.setNickname("测试1");
+                myUser.update(context, new UpdateListener() {
+                    @Override
+                    public void onSuccess() {
+                        System.out.println("更新成功");
+                    }
+
+                    @Override
+                    public void onFailure(int i, String s) {
+                        System.out.println("更新失败"+i+s);
+                    }
+                });
+
                 Intent it = new Intent(context, MapSearch.class);
                 startActivity(it);
                 System.out.println("跳转成功");

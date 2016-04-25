@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 <com.zuchexing.carrental.customlayout.TitleLayout
-    android:id="@+id/zdy_finding_car"
+    android:id="@+id/car_strore"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+
     />
-    <com.zuchexing.carrental.customlayout.CarListview
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 </LinearLayout>

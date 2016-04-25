@@ -35,6 +35,7 @@ public class MapSearch extends AppCompatActivity implements IMap{
 
     private void updatePosttion(AMapLocation location){//根据定位更新地图
         LatLng pos=new LatLng(location.getLatitude(),location.getLongitude());
+        System.out.println("city:"+location.getCity());
         CameraUpdate cu= CameraUpdateFactory.changeLatLng(pos);
         aMap.moveCamera(cu);
         aMap.clear();
