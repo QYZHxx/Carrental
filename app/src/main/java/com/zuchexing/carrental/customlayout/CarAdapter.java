@@ -70,6 +70,7 @@ public class CarAdapter extends BaseAdapter {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                // Intent it=new Intent(context,)
             }
         });

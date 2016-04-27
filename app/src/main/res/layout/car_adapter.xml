@@ -5,64 +5,88 @@
     android:orientation="horizontal">
 
     <ImageView
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="3dp"
-        android:src="@drawable/a"
-        android:scaleType="fitXY"
         android:layout_width="120dp"
-        android:layout_height="80dp" />
-    <LinearLayout
+        android:layout_height="80dp"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="3dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_gravity="center"
+        android:scaleType="fitXY"
+        android:src="@drawable/a" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:layout_gravity="center"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
-        <TextView
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:layout_weight="1"
-            android:id="@+id/car_name"
-            android:text="宝马 X5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/car_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="宝马 X5"
                 android:textSize="18sp"
-                android:textColor="@color/colorAccent"
-                android:id="@+id/car_price"
-                android:text="￥129"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:textStyle="bold" />
 
             <TextView
-                android:textColor="@color/colorAccent"
-                android:text="/日均"
+                android:id="@+id/car_price"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="￥129"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/日均"
+                android:textColor="@color/colorAccent" />
         </LinearLayout>
+
         <TextView
-            android:textSize="15sp"
-            android:paddingTop="5dp"
             android:id="@+id/car_address"
-            android:text="长沙五一大道..."
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:textSize="15sp"
+            android:layout_height="wrap_content"
             android:paddingTop="5dp"
-            android:id="@+id/car_collect"
-            android:text="收藏140"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:text="长沙五一大道..."
+            android:textSize="15sp" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5dp">
+
+            <TextView
+                android:id="@+id/car_collect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="收藏140"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:paddingTop="2dp"
+                android:id="@+id/tui_jian"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/tuijian" />
+
+            <ImageView
+                android:paddingTop="2dp"
+                android:id="@+id/you_hui"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/youhui" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

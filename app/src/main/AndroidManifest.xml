@@ -51,6 +51,7 @@
         <activity android:name=".my.MyPersonal"/>
         <activity android:name=".my.MyInformation"/>
         <activity android:name=".lookup.FindingCar"/>
+        <activity android:name=".lookup.FindingCarStore"/>
     </application>
 
 </manifest>

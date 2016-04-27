@@ -23,7 +23,26 @@ public class Car extends BmobObject {//车辆信息表
     private Integer carAge;           //车龄
     private Integer carRentPrice;     //租用的价格
     private String  carName;          //车辆名称
+    private String carLongitude;     //车辆经度
+    private String carLatitude;      //车辆纬度
    // private  BmobRelation carCollecs;     //车辆收藏者,多对多关系：用于存储喜欢该车辆的所有用户
+
+
+    public String getCarLongitude() {
+        return carLongitude;
+    }
+
+    public void setCarLongitude(String carLongitude) {
+        this.carLongitude = carLongitude;
+    }
+
+    public String getCarLatitude() {
+        return carLatitude;
+    }
+
+    public void setCarLatitude(String carLatitude) {
+        this.carLatitude = carLatitude;
+    }
 
     public MyUser getMyUser() {
         return myUser;

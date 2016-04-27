@@ -24,4 +24,9 @@
         android:id="@+id/btn_map_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    <Button
+        android:text="店铺查询"
+        android:id="@+id/btn_car_store"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

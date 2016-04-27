@@ -13,10 +13,28 @@ public class Store extends BmobObject {//店铺信息表
     private MyUser myUser;             //体现的是一对一的关系，该店铺属于某个用户
     private String storeName;          //店铺的名字
     private String storeAddress;       //店铺的地址
+    private String storeCity;          //店铺所在城市
     private String storeIntroduce;     //店铺简介
     private String storePhone;         //店铺的联系电话
     private List<BmobFile> storePic;   //店铺的图片
     private Integer collectNum;        //店铺的收藏个数
+    private Integer storeCallNum;         //店铺电话拨打次数
+
+    public Integer getStoreCallNum() {
+        return storeCallNum;
+    }
+
+    public void setStoreCallNum(Integer storeCallNum) {
+        this.storeCallNum = storeCallNum;
+    }
+
+    public String getStoreCity() {
+        return storeCity;
+    }
+
+    public void setStoreCity(String storeCity) {
+        this.storeCity = storeCity;
+    }
 
     public MyUser getMyUser() {
         return myUser;
