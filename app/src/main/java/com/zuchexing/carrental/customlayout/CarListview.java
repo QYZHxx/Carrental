@@ -8,13 +8,11 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.amap.api.location.AMapLocation;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.zuchexing.carrental.R;
+import com.zuchexing.carrental.application.DataApplication;
 import com.zuchexing.carrental.bmob.Car;
-import com.zuchexing.carrental.map.IMap;
-import com.zuchexing.carrental.map.MapUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,13 +23,13 @@ import cn.bmob.v3.listener.FindListener;
 /**
  * Created by 情谊纵横 on 2016/4/22.
  */
-public class CarListview extends LinearLayout implements IMap {
+public class CarListview extends LinearLayout  {
 
     ArrayList<Car> datas;
     CarAdapter adapter;
     String city="";
     Context context;
-    MapUtil mapUtil;
+//    MapUtil mapUtil;
     PullToRefreshListView plistView;
 
     public CarListview(Context context) {
@@ -42,8 +40,12 @@ public class CarListview extends LinearLayout implements IMap {
         super(context, attrs);
         this.context=context;
         LayoutInflater.from(context).inflate(R.layout.zdy_car_listview, this);
-        mapUtil=new MapUtil(context,this);
-        mapUtil.startLocation();
+
+        DataApplication app=(DataApplication)context.getApplicationContext();
+        city=app.getCity();
+        initData();
+//        mapUtil=new MapUtil(context,this);
+//        mapUtil.startLocation();
     }
 
     private void initData(){
@@ -102,10 +104,10 @@ public class CarListview extends LinearLayout implements IMap {
         });
     }
 
-    @Override
-    public void getAMapLocation(AMapLocation mapLocation) {
-        city=mapLocation.getCity();
-        initData();
-        mapUtil.stopLocation();
-    }
+//    @Override
+//    public void getAMapLocation(AMapLocation mapLocation) {
+//        city=mapLocation.getCity();
+//        initData();
+//        mapUtil.stopLocation();
+//    }
 }

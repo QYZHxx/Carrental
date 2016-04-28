@@ -16,7 +16,6 @@ import com.zuchexing.carrental.my.MyPersonal;
 import com.zuchexing.carrental.trip.TripFragment;
 
 import cn.bmob.v3.Bmob;
-import cn.bmob.v3.BmobSMS;
 import cn.bmob.v3.BmobUser;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {//主页面
