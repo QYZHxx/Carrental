@@ -1,16 +1,20 @@
 package com.zuchexing.carrental.carowner;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.zuchexing.carrental.MainActivity;
 import com.zuchexing.carrental.R;
-
+import com.zuchexing.carrental.lookup.FindingCar;
+import  com.zuchexing.carrental.car_register;
 /**
  * Created by 情谊纵横 on 2016/4/19.
  */
@@ -19,8 +23,9 @@ public class CarOwnerFragment extends Fragment implements View.OnClickListener {
     LinearLayout layout1;
     LinearLayout layout2;
     LinearLayout layout3;
+    Button findcar;
     Context context ;
-
+    Intent jump;
     @Override
     public void onAttach(Context context) {
 
@@ -36,9 +41,11 @@ public class CarOwnerFragment extends Fragment implements View.OnClickListener {
         layout1=(LinearLayout)view.findViewById(R.id.carowner_tv_how);
         layout2=(LinearLayout)view.findViewById(R.id.carowner_tv_interest);
         layout3=(LinearLayout)view.findViewById(R.id.carowner_tv_safe);
+        findcar=(Button)view.findViewById(R.id.carowner_bt_findcar);
         layout1.setOnClickListener(this);
         layout2.setOnClickListener(this);
         layout3.setOnClickListener(this);
+        findcar.setOnClickListener(this);
         return view;
 
         //jhj
@@ -47,6 +54,10 @@ public class CarOwnerFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        if (v.getId()==R.id.carowner_bt_findcar){
+            jump=new Intent(context,car_register.class);
+            startActivity(jump);
+        }
 
     }
 }

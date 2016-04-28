@@ -4,32 +4,37 @@
     android:layout_height="match_parent"
     android:background="#d6dade"
     >
-
+    <com.zuchexing.carrental.customlayout.TitleLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/title"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="10"
         android:layout_marginTop="20dp"
         android:clickable="true"
+        android:background="@drawable/btn_color"
         >
         <TextView
             android:layout_marginRight="1dp"
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="50dp"
-            android:text="京A"
+            android:text="湘"
             android:drawableEnd="@drawable/right"
-            android:textSize="25dp"
-            android:layout_weight="3"
+            android:textSize="15dp"
+
             android:background="#FFFFFF"
             android:gravity="center"
+            android:layout_marginLeft="2dp"
             />
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:hint="请输出车牌号"
-            android:layout_weight="7"
-            android:textSize="25dp"
+            android:layout_weight="1"
+            android:textSize="15dp"
             android:background="#FFFFFF"
             />
     </LinearLayout>
@@ -38,12 +43,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:clickable="true"
+        android:id="@+id/carregister_brandselect"
         >
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:text="车辆型号"
-        android:textSize="20dp"
+        android:textSize="15dp"
         android:background="#FFFFFF"
         android:gravity="center"
         />
@@ -54,7 +60,7 @@
         android:gravity="right|center"
         android:layout_gravity="right"
         android:background="#ffffff"
-        android:textSize="20dp"
+        android:textSize="15dp"
         android:layout_weight="1"
         android:drawableEnd="@drawable/right"
         />
@@ -63,24 +69,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:clickable="true"
+
         >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:text="行驶证所有人"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:background="#FFFFFF"
             android:gravity="center"
             />
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:hint="请输入"
+            android:hint="请输入驾驶人名字"
             android:gravity="right|center"
             android:layout_weight="7"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:background="#FFFFFF"
+            android:id="@+id/carregister_name"
             />
         </LinearLayout>
     <LinearLayout
@@ -88,14 +95,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:clickable="true"
+        android:id="@+id/car_register_address"
         >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:text="交接地点"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:background="#FFFFFF"
             android:gravity="center"
+
             />
         <TextView
             android:layout_width="wrap_content"
@@ -104,9 +113,10 @@
             android:gravity="right|center"
             android:layout_gravity="right"
             android:background="#ffffff"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:layout_weight="1"
             android:drawableEnd="@drawable/right"
+
             />
     </LinearLayout>
     <Button

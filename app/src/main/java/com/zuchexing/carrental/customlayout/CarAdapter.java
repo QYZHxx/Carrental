@@ -1,14 +1,18 @@
 package com.zuchexing.carrental.customlayout;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.zuchexing.carrental.R;
 import com.zuchexing.carrental.bmob.Car;
+import com.zuchexing.carrental.car_information;
 
 import java.util.List;
 
@@ -47,7 +51,7 @@ public class CarAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         Car car=lists.get(position);
         ViewHolder v = null;
         if (convertView == null) {
@@ -62,7 +66,6 @@ public class CarAdapter extends BaseAdapter {
         }else {
             v=(ViewHolder)convertView.getTag();
         }
-
         v.name.setText(car.getCarName());
         v.address.setText(car.getCarAddress());
         v.collect.setText("收藏100");
@@ -70,10 +73,24 @@ public class CarAdapter extends BaseAdapter {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                 Intent it=new Intent(context, car_information.class);
+                    it.setAction("com.caradaputer.information");
+                Bundle bundle=new Bundle();
+                bundle.putString("car_name", lists.get(position).getCarName());
+                bundle.putString("car_price", lists.get(position).getCarRentPrice() + "");
+                bundle.putString("car_num",lists.get(position).getCarNum());
+                bundle.putString("car_address", lists.get(position).getCarAddress());
+                bundle.putString("car_Km",lists.get(position).getCarKm()+" km");
+                bundle.putString("carage",lists.get(position).getCarAge()+" 年");
+                bundle.putString("car_sitter",4+"座");
+                it.putExtras(bundle);
 
-               // Intent it=new Intent(context,)
+
+                context.startActivity(it);
+
             }
         });
         return convertView;
+
     }
 }

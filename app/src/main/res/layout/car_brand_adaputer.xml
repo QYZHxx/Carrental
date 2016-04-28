@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/carbrandadaputer_zimu"
+    android:text="字母显示"
+    android:background="#e2e4e6"
+    />
+    <com.zuchexing.carrental.bar_brad_graidview
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/brad_graidview"
+        android:numColumns="1"
+        android:paddingBottom="2dp"
+        android:background="#e2e4e6"
+        android:focusable="false"
+        ></com.zuchexing.carrental.bar_brad_graidview>
+</LinearLayout>

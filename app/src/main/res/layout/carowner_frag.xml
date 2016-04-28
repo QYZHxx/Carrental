@@ -160,10 +160,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center|bottom"
         android:background="@drawable/btn_color"
-        android:text="开始租车"
+        android:text="开始出租"
         android:textSize="20dp"
         android:textColor="#FFFFFF"
         android:layout_marginTop="40dp"
+        android:id="@+id/carowner_bt_findcar"
         />
 
 </LinearLayout>
