@@ -5,27 +5,24 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
-import com.amap.api.location.AMapLocation;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.zuchexing.carrental.R;
+import com.zuchexing.carrental.application.DataApplication;
 import com.zuchexing.carrental.bmob.Store;
 import com.zuchexing.carrental.customlayout.TitleLayout;
-import com.zuchexing.carrental.map.IMap;
-import com.zuchexing.carrental.map.MapUtil;
 
 import java.util.ArrayList;
 
 /**
  * Created by 情谊纵横 on 2016/4/25.
  */
-public class FindingCarStore extends AppCompatActivity implements IMap{
+public class FindingCarStore extends AppCompatActivity {
 
     TitleLayout title;
     ArrayList<Store> datas;
     StoreAdapter adapter;
     String city="";
-    MapUtil mapUtil;
     PullToRefreshListView plistView;
 
     @Override
@@ -35,8 +32,10 @@ public class FindingCarStore extends AppCompatActivity implements IMap{
         title=(TitleLayout)findViewById(R.id.car_store);
         title.setTitle("店铺查找");
         title.setIsHidderCollateImage(true);
-        mapUtil=new MapUtil(this,this);
-        mapUtil.startLocation();
+        //获取全局变量
+        DataApplication app=(DataApplication)getApplication();
+        city=app.getCity();
+        initData();
     }
 
     private void initData(){
@@ -99,10 +98,4 @@ public class FindingCarStore extends AppCompatActivity implements IMap{
         });
     }
 
-    @Override
-    public void getAMapLocation(AMapLocation mapLocation) {//Imap接口的回调
-        city=mapLocation.getCity();
-        initData();
-        mapUtil.stopLocation();
-    }
 }
