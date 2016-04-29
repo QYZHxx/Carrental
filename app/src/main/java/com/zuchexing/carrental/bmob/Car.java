@@ -25,8 +25,17 @@ public class Car extends BmobObject {//车辆信息表
     private String  carName;          //车辆名称
     private String carLongitude;     //车辆经度
     private String carLatitude;      //车辆纬度
+    private BmobFile carImage;
    // private  BmobRelation carCollecs;     //车辆收藏者,多对多关系：用于存储喜欢该车辆的所有用户
 
+
+    public BmobFile getCarImage() {
+        return carImage;
+    }
+
+    public void setCarImage(BmobFile carImage) {
+        this.carImage = carImage;
+    }
 
     public String getCarLongitude() {
         return carLongitude;

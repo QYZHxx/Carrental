@@ -43,4 +43,5 @@ dependencies {
     compile files('libs/okhttp-2.4.0.jar')
     compile files('libs/okio-1.4.0.jar')
     compile project(':pulltorefresh')
+    compile files('libs/picasso-2.5.2.jar')
 }

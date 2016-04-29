@@ -20,6 +20,7 @@ public class MapUtil {//地图定位类
     IMap iMap;
 
     public MapUtil(Context context,IMap iMap) {
+
         this.context = context;
         this.iMap=iMap;
     }

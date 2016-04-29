@@ -1,16 +1,14 @@
 package com.zuchexing.carrental;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.zuchexing.carrental.bmob.Car;
-
-import java.util.ArrayList;
 
 public class car_information extends AppCompatActivity implements View.OnClickListener{
     private TextView carName;
@@ -46,15 +44,23 @@ public class car_information extends AppCompatActivity implements View.OnClickLi
         carsiter=(TextView)findViewById(R.id.car_information_carsiter);
         layout=(LinearLayout)findViewById(R.id.Car_information_layout);
 
+        Car car=(Car)getIntent().getExtras().getSerializable("Car");
+//
+//        bundle.putString("car_name", lists.get(position).getCarName());
+//        bundle.putString("car_price", lists.get(position).getCarRentPrice() + "");
+//        bundle.putString("car_num",lists.get(position).getCarNum());
+//        bundle.putString("car_address", lists.get(position).getCarAddress());
+//        bundle.putString("car_Km",lists.get(position).getCarKm()+" km");
+//        bundle.putString("carage",lists.get(position).getCarAge()+" 年");
+//        bundle.putString("car_sitter",4+"座");
 
-       Bundle bundle=this.getIntent().getExtras();
-        carName.setText(bundle.getString("car_name"));
-        carprice.setText(bundle.getString("car_price"));
-        address.setText(bundle.getString("car_address"));
-        carnum.setText(bundle.getString("car_num"));
-        carKm.setText(bundle.getString("car_Km"));
-        carage.setText(bundle.getString("carage"));
-        carsiter.setText(bundle.getString("car_sitter"));
+        carName.setText(car.getCarName()+"");
+        carprice.setText("￥"+car.getCarRentPrice());
+        address.setText(car.getCarAddress()+"");
+        carnum.setText(car.getCarNum()+"");
+        carKm.setText(car.getCarKm()+"km");
+        carage.setText(car.getCarAge()+"");
+        carsiter.setText(car.getCarVehices()+"");
 
         ding.setOnClickListener(this);
 

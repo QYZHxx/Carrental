@@ -7,8 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.zuchexing.carrental.R;
 import com.zuchexing.carrental.bmob.Car;
@@ -28,7 +28,7 @@ public class CarAdapter extends BaseAdapter {
 
         this.lists = lists;
         this.context = context;
-        System.out.println("lists:"+lists.size()+lists.get(1).getObjectId());
+        System.out.println("lists:" + lists.size() + lists.get(1).getObjectId());
     }
 
     @Override
@@ -48,43 +48,45 @@ public class CarAdapter extends BaseAdapter {
 
     public class ViewHolder {
         TextView name, price, address, collect;
+        ImageView image;
     }
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        Car car=lists.get(position);
+        final Car car = lists.get(position);
         ViewHolder v = null;
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.car_adapter, null);
             v = new ViewHolder();
-            v.name=(TextView)convertView.findViewById(R.id.car_name);
-            v.price=(TextView)convertView.findViewById(R.id.car_price);
-            v.address=(TextView)convertView.findViewById(R.id.car_address);
-            v.collect=(TextView)convertView.findViewById(R.id.car_collect);
+            v.name = (TextView) convertView.findViewById(R.id.car_name);
+            v.price = (TextView) convertView.findViewById(R.id.car_price);
+            v.address = (TextView) convertView.findViewById(R.id.car_address);
+            v.collect = (TextView) convertView.findViewById(R.id.car_collect);
+            v.image = (ImageView) convertView.findViewById(R.id.car_image);
 
             convertView.setTag(v);
-        }else {
-            v=(ViewHolder)convertView.getTag();
+        } else {
+            v = (ViewHolder) convertView.getTag();
         }
         v.name.setText(car.getCarName());
         v.address.setText(car.getCarAddress());
         v.collect.setText("收藏100");
-        v.price.setText("￥"+car.getCarRentPrice());
+        v.price.setText("￥" + car.getCarRentPrice());
+
+//        if (car.getCarImage()!=null) {
+//            String path = car.getCarImage().getUrl() + "";
+//            Picasso.with(context).load(path).resize(200, 200).into(v.image);
+//        }
+
+
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 Intent it=new Intent(context, car_information.class);
-                    it.setAction("com.caradaputer.information");
-                Bundle bundle=new Bundle();
-                bundle.putString("car_name", lists.get(position).getCarName());
-                bundle.putString("car_price", lists.get(position).getCarRentPrice() + "");
-                bundle.putString("car_num",lists.get(position).getCarNum());
-                bundle.putString("car_address", lists.get(position).getCarAddress());
-                bundle.putString("car_Km",lists.get(position).getCarKm()+" km");
-                bundle.putString("carage",lists.get(position).getCarAge()+" 年");
-                bundle.putString("car_sitter",4+"座");
-                it.putExtras(bundle);
 
+                Intent it = new Intent(context, car_information.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("Car", car);
+                it.putExtras(bundle);
 
                 context.startActivity(it);
 

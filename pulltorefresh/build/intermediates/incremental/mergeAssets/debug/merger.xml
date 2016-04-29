@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="F:\androidproject\Carrental\pulltorefresh\src\main\assets"/></dataSet><dataSet config="debug"><source path="F:\androidproject\Carrental\pulltorefresh\src\debug\assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="D:\Java\android\Studio\AndroidStudioProjects\Carrental\pulltorefresh\src\main\assets"/></dataSet><dataSet config="debug"><source path="D:\Java\android\Studio\AndroidStudioProjects\Carrental\pulltorefresh\src\debug\assets"/></dataSet></merger>

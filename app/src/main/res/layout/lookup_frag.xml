@@ -5,28 +5,73 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="找车页面" />
+    <LinearLayout
+        android:background="#ffffff"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="35dp">
 
+        <TextView
+            android:id="@+id/city_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:text="城市"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_marginRight="60dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="租车行"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+    </LinearLayout>
     <FrameLayout
         android:id="@+id/advert_frag"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-   <Button
-       android:id="@+id/lookup_btn_cx"
-       android:text="立即找车"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content" />
+        android:layout_height="wrap_content" />
+
     <Button
-        android:text="地图查询"
+        android:id="@+id/lookup_btn_cx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="立即找车" />
+
+    <Button
         android:id="@+id/btn_map_search"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="地图查询" />
+
     <Button
-        android:text="店铺查询"
         android:id="@+id/btn_car_store"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="店铺查询" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="6dp"
+            android:gravity="center"
+            android:text="猜你喜欢"
+            android:textSize="17sp" />
+
+        <com.zuchexing.carrental.customlayout.CarListview
+            android:id="@+id/car_likes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 </LinearLayout>

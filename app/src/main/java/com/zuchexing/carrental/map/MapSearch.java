@@ -1,9 +1,11 @@
 package com.zuchexing.carrental.map;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.maps.AMap;
@@ -19,6 +21,7 @@ import com.zuchexing.carrental.R;
 import com.zuchexing.carrental.bmob.Car;
 import com.zuchexing.carrental.bmob.CarUtil;
 import com.zuchexing.carrental.bmob.ICar;
+import com.zuchexing.carrental.car_information;
 import com.zuchexing.carrental.customlayout.TitleLayout;
 
 import java.util.List;
@@ -164,13 +167,26 @@ public class MapSearch extends AppCompatActivity implements IMap, ICar, AMap.Inf
 
     @Override
     public View getInfoContents(Marker marker) {//显示定义信息窗口
-        View view = getLayoutInflater().inflate(R.layout.car_adapter, null);
+        Car car=(Car) marker.getObject();
+        View view = getLayoutInflater().inflate(R.layout.car_marker, null);
+        TextView name=(TextView)view.findViewById(R.id.car_name);
+        TextView collect=(TextView)view.findViewById(R.id.car_collect);
+        TextView price=(TextView)view.findViewById(R.id.car_price);
+
+        name.setText(car.getCarName());
+        price.setText("￥"+car.getCarRentPrice());
         return view;
     }
 
     @Override
     public void onInfoWindowClick(Marker marker) {//信息窗口被点击
        Car car=(Car) marker.getObject();
+
+        Intent it=new Intent(MapSearch.this,car_information.class);
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("Car",car);
+        it.putExtras(bundle);
+        startActivity(it);
         System.out.println(car.getCarName());
     }
 }
