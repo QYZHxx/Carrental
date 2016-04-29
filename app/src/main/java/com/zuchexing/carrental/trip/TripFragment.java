@@ -54,11 +54,9 @@ public class TripFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v.getId()==R.id.trip_bt_rentcar){
-
                 jump=new Intent(context, FindingCar.class);
                 startActivity(jump);
                 System.out.println("点击开始租车");
-
         }
 
     }

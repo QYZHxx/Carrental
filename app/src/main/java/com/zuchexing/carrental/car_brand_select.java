@@ -59,22 +59,18 @@ public class car_brand_select extends AppCompatActivity {
         setContentView(R.layout.car_brand_select);
         title=(TitleLayout)findViewById(R.id.title);
         initview();
-        data=new ArrayList<>();
         init();
-        car_tab_lv=(ListView)findViewById(R.id.car_tab_lv);
-        adaputer=new car_broad_adaputer(this,data);
-        car_tab_lv.setAdapter(adaputer);
-
-        Bundle bundle=new Bundle();
-        bundle.get("car");
-
 
     }
     public void initview(){
+        data=new ArrayList<>();
+        car_tab_lv=(ListView)findViewById(R.id.car_tab_lv);
+        adaputer=new car_broad_adaputer(this,this,data);
+        car_tab_lv.setAdapter(adaputer);
+
         title.setTitle("选择车辆的品牌");
         title.setIsHidderCollateImage(true);
         title.setIsHidderServeImage(true);
-
     }
     public void init(){
         for (int i=0;i<letters.length;i++){

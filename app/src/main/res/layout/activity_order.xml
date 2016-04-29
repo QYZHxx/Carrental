@@ -30,7 +30,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="车辆配置"
+        android:text=""
         android:textSize="15dp"
         android:textStyle="bold"
         android:id="@+id/order_carrent_configuration"
@@ -49,6 +49,7 @@
             android:background="#ffffff"
             android:orientation="horizontal"
             android:paddingLeft="10dp"
+            android:clickable="true"
             >
         <TextView
             android:layout_width="wrap_content"
@@ -67,6 +68,7 @@
                 android:layout_weight="1"
                 android:layout_marginRight="15dp"
                 android:layout_gravity="right|center"
+                android:onClick="getcartime"
                 />
         </LinearLayout>
         <LinearLayout
@@ -76,6 +78,7 @@
             android:background="#ffffff"
             android:layout_marginTop="2dp"
             android:paddingLeft="10dp"
+
             >
             <TextView
                 android:layout_width="wrap_content"
@@ -87,14 +90,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="还车时间:"
-            android:id="@+id/order_carrent_return"
+            android:id="@+id/order_carrent_returntime"
             android:textSize="15dp"
             android:textStyle="bold"
             android:gravity="right"
             android:layout_weight="1"
             android:layout_marginRight="15dp"
             android:layout_gravity="right|center"
-
+            android:onClick="returntimes"
+            android:clickable="true"
             />
         </LinearLayout>
         <LinearLayout
@@ -104,13 +108,13 @@
             android:background="#ffffff"
             android:layout_marginTop="2dp"
             android:paddingLeft="10dp"
+
             >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="租车时间:"
             android:layout_gravity="center|left"
-
             />
             <TextView
                 android:layout_width="match_parent"
@@ -122,6 +126,7 @@
                 android:layout_marginRight="15dp"
                 android:layout_gravity="right|center"
                 android:gravity="right"
+                android:id="@+id/order_carrent_trim"
                 />
         </LinearLayout>
         <LinearLayout
@@ -141,7 +146,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/order_address"
+                android:id="@+id/order_carrent_address"
                 android:text="取车地址:"
                 android:textSize="15dp"
                 android:textStyle="bold"
@@ -149,6 +154,7 @@
                 android:layout_weight="1"
                 android:layout_marginRight="15dp"
                 android:layout_gravity="right|center"
+
                 />
         </LinearLayout>
         <LinearLayout
@@ -164,6 +170,7 @@
                 android:layout_height="wrap_content"
                 android:text="租金"
                 android:layout_gravity="center|left"
+
                 />
             <TextView
                 android:layout_width="match_parent"
@@ -174,6 +181,7 @@
                 android:layout_gravity="center|left"
                 android:gravity="right"
                 android:layout_marginRight="10dp"
+
                 />
     </LinearLayout>
         <Button
@@ -185,6 +193,7 @@
             android:textColor="#f0f0f0"
             android:background="@drawable/btn_color"
             android:layout_gravity="center"
+            android:onClick="order_comit"
             />
 </LinearLayout>
 

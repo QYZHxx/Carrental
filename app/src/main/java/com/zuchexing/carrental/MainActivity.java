@@ -21,7 +21,7 @@ import cn.bmob.v3.BmobUser;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {//主页面
 
     private TextView tv_carowner, tv_lookup, tv_my, tv_trip;
-    private Fragment fragment1, fragment2, fragment3, fragment4;
+    private Fragment fragment1, fragment2, fragment3, fragment4,fragment5;
     private FragmentManager manager;
 
     @Override
@@ -81,13 +81,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 tv_my.setSelected(true);
                 BmobUser bmobUser = BmobUser.getCurrentUser(MainActivity.this);
                 if(bmobUser != null){
-                    Intent it = new Intent(MainActivity.this, MyPersonal.class);
-                    startActivity(it);
+                    if (fragment5 == null) {
+                        fragment5 = new MyPersonal();
+                        transaction.add(R.id.main_content, fragment5);
+                    } else {
+                        transaction.show(fragment5);
+                    }
+
                 }else{
                     //缓存用户对象为空时， 可打开用户注册界面…
                     if (fragment4 == null) {
                         fragment4 = new MyFragment();
                         transaction.add(R.id.main_content, fragment4);
+
                     } else {
                         transaction.show(fragment4);
                     }
@@ -103,6 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (fragment2 != null) transaction.hide(fragment2);
         if (fragment3 != null) transaction.hide(fragment3);
         if (fragment4 != null) transaction.hide(fragment4);
+        if (fragment5 != null) transaction.hide(fragment5);
     }
 
     //重置多有选中的状态

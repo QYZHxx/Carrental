@@ -9,7 +9,8 @@ import cn.bmob.v3.datatype.BmobFile;
  * Created by 情谊纵横 on 2016/4/21.
  */
 public class Car extends BmobObject {//车辆信息表
-
+    //车辆状态  1.0x11    2. 0x22   3.0x33
+    //车辆的
     private MyUser myUser;           //车辆的拥有者,体现的是一对一的关系，该车辆属于某个用户
     private String carNum;           //车牌号
     private String carAddress;       //地址
@@ -26,9 +27,6 @@ public class Car extends BmobObject {//车辆信息表
     private String carLongitude;     //车辆经度
     private String carLatitude;      //车辆纬度
     private BmobFile carImage;
-   // private  BmobRelation carCollecs;     //车辆收藏者,多对多关系：用于存储喜欢该车辆的所有用户
-
-
     public BmobFile getCarImage() {
         return carImage;
     }
@@ -36,6 +34,19 @@ public class Car extends BmobObject {//车辆信息表
     public void setCarImage(BmobFile carImage) {
         this.carImage = carImage;
     }
+
+
+    public String getCarDate() {
+        return carDate;
+    }
+
+    public void setCarDate(String carDate) {
+        this.carDate = carDate;
+    }
+
+    private String carDate;
+   // private  BmobRelation carCollecs;     //车辆收藏者,多对多关系：用于存储喜欢该车辆的所有用户
+
 
     public String getCarLongitude() {
         return carLongitude;

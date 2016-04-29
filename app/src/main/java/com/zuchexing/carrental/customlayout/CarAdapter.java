@@ -91,12 +91,10 @@ public class CarAdapter extends BaseAdapter {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("Car", car);
                 it.putExtras(bundle);
-
                 context.startActivity(it);
 
             }
         });
         return convertView;
-
     }
 }

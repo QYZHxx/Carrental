@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fafafa"
+    >
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ffffff">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/img_back"
+            android:onClick="back"
+            android:src="@drawable/my_img_back"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="5dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_table"
+            android:text="关于"
+            android:textSize="22dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="135dp"
+            android:textColor="#282828" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:background="#ffffff">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="检查更新"
+                android:layout_gravity="center"
+                android:textSize="18dp"
+                android:layout_marginLeft="20dp"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1.0.0"
+                android:layout_gravity="center"
+                android:layout_marginLeft="200dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:background="#ffffff">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="新浪微博"
+                android:layout_gravity="center"
+                android:textSize="18dp"
+                android:layout_marginLeft="20dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="租车行"
+                android:layout_gravity="center"
+                android:layout_marginLeft="200dp"
+                />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#ffffff"
+            android:layout_marginTop="2dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="官方网站"
+                android:layout_gravity="center"
+                android:textSize="18dp"
+                android:layout_marginLeft="20dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="www.zuchexing.com"
+                android:layout_marginLeft="130dp"
+                android:layout_gravity="center"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
