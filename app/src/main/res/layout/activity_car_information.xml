@@ -15,12 +15,11 @@
 
         >
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/car_information_vp_pics"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-
-            />
+     <ImageView
+         android:scaleType="fitXY"
+         android:id="@+id/car_image1"
+         android:layout_width="match_parent"
+         android:layout_height="200dp" />
 
         <LinearLayout
             android:layout_width="match_parent"

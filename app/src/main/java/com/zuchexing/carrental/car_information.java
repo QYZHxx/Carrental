@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.zuchexing.carrental.bmob.Car;
 
 public class car_information extends AppCompatActivity implements View.OnClickListener{
@@ -23,6 +25,7 @@ public class car_information extends AppCompatActivity implements View.OnClickLi
     private TextView carage;   //车龄
     private Button ding;   //开始订购
     private LinearLayout layout;
+    private ImageView image1;
     Intent it;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,7 @@ public class car_information extends AppCompatActivity implements View.OnClickLi
         ding=(Button)findViewById(R.id.car_information_btn_ding);
         carsiter=(TextView)findViewById(R.id.car_information_carsiter);
         layout=(LinearLayout)findViewById(R.id.Car_information_layout);
+        image1=(ImageView)findViewById(R.id.car_image1);
 
         Car car=(Car)getIntent().getExtras().getSerializable("Car");
 //
@@ -54,6 +58,12 @@ public class car_information extends AppCompatActivity implements View.OnClickLi
 //        bundle.putString("carage",lists.get(position).getCarAge()+" 年");
 //        bundle.putString("car_sitter",4+"座");
 
+        if (car.getCarImage()!=null) {
+            String path = car.getCarImage().getUrl() + "";
+            Picasso.with(car_information.this).load(path).into(image1);
+        }else {
+            image1.setImageResource(R.drawable.a);
+        }
         carName.setText(car.getCarName()+"");
         carprice.setText("￥"+car.getCarRentPrice());
         address.setText(car.getCarAddress()+"");

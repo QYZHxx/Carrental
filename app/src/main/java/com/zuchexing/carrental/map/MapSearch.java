@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amap.api.location.AMapLocation;
@@ -17,6 +18,7 @@ import com.amap.api.maps.model.CircleOptions;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
+import com.squareup.picasso.Picasso;
 import com.zuchexing.carrental.R;
 import com.zuchexing.carrental.bmob.Car;
 import com.zuchexing.carrental.bmob.CarUtil;
@@ -172,6 +174,13 @@ public class MapSearch extends AppCompatActivity implements IMap, ICar, AMap.Inf
         TextView name=(TextView)view.findViewById(R.id.car_name);
         TextView collect=(TextView)view.findViewById(R.id.car_collect);
         TextView price=(TextView)view.findViewById(R.id.car_price);
+        ImageView imageView=(ImageView)view.findViewById(R.id.car_image);
+
+        if (car.getCarImage()!=null) {
+            String path = car.getCarImage().getUrl() + "";
+            System.out.println(path);
+            Picasso.with(MapSearch.this).load(path).into(imageView);
+        }
 
         name.setText(car.getCarName());
         price.setText("￥"+car.getCarRentPrice());

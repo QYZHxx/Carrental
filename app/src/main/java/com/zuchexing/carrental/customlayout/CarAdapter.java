@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.zuchexing.carrental.R;
 import com.zuchexing.carrental.bmob.Car;
 import com.zuchexing.carrental.car_information;
@@ -54,6 +55,7 @@ public class CarAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         final Car car = lists.get(position);
+
         ViewHolder v = null;
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.car_adapter, null);
@@ -73,10 +75,12 @@ public class CarAdapter extends BaseAdapter {
         v.collect.setText("收藏100");
         v.price.setText("￥" + car.getCarRentPrice());
 
-//        if (car.getCarImage()!=null) {
-//            String path = car.getCarImage().getUrl() + "";
-//            Picasso.with(context).load(path).resize(200, 200).into(v.image);
-//        }
+        if (car.getCarImage()!=null) {
+            String path = car.getCarImage().getUrl() + "";
+            Picasso.with(context).load(path).resize(200, 200).into(v.image);
+        }else {
+            v.image.setImageResource(R.drawable.a);
+        }
 
 
         convertView.setOnClickListener(new View.OnClickListener() {
