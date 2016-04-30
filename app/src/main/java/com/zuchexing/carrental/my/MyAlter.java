@@ -23,13 +23,9 @@ public class MyAlter extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.my_act_alter);
-
         old_password=(EditText)findViewById(R.id.old_password);
         new_password=(EditText)findViewById(R.id.new_password);
         btn_alter   =(Button)findViewById(R.id.btn_alter);
-
-
-
     }
 
     public void alter(View view){

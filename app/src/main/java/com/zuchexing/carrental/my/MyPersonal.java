@@ -28,7 +28,7 @@ import cn.bmob.v3.listener.FindListener;
 /**
  * Created by 情谊纵横 on 2016/4/20
  */
-public class MyPersonal extends Fragment implements View.OnClickListener{
+public class MyPersonal extends Fragment {
 
     private ImageView img_head;
     private Button btn_quit;
@@ -37,92 +37,114 @@ public class MyPersonal extends Fragment implements View.OnClickListener{
     LinearLayout line_garage;
     LinearLayout txt_about;
     LinearLayout line_alter;
-    LinearLayout carbarns;  //车库
-    View view;
+    LinearLayout line_attestation;
+
+
     Context context;
-    TextView carbarn;
     private AlertDialog dialog;
-    private Intent it;
+
     @Override
     public void onAttach(Context context) {
         this.context = context;
         super.onAttach(context);
     }
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-      view = inflater.inflate(R.layout.my_fgm_personal, null);
+        View view = inflater.inflate(R.layout.my_fgm_personal, null);
 
-        initview();
-        return view;
-    }
-    public void initview(){
+        //实名认证
+        line_attestation=(LinearLayout)view.findViewById(R.id.line_attestation);
+        line_attestation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it=new Intent(context,MyAttestation.class);
+                startActivity(it);
+            }
+
+        });
+
         line_alter=(LinearLayout)view.findViewById(R.id.line_alter);
+        line_alter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(context,MyAlter.class);
+                startActivity(it);
+            }
+        });
+
         img_head=(ImageView)view.findViewById(R.id.img_head);
+        img_head.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(context, MyInformation.class);
+                startActivity(it);
+            }
+        });
+
         btn_quit=(Button)view.findViewById(R.id.btn_quit);
-        txt_about=(LinearLayout)view.findViewById(R.id.txt_about);
-        //店铺
-        line_garage=(LinearLayout)view.findViewById(R.id.line_garage);
+        btn_quit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+        Toast.makeText(context, "退出成功！", Toast.LENGTH_SHORT).show();
+        BmobUser.logOut(context);   //清除缓存用户对象
+        Intent it = new Intent(context, MainActivity.class);
+        startActivity(it);
+
+            }
+        });
+
         //读取数据库用户名
         txt_name=(TextView)view.findViewById(R.id.txt_name);
         MyUser user = BmobUser.getCurrentUser(context,MyUser.class);
         txt_name.setText(user.getUsername());
-        carbarn=(TextView)view.findViewById(R.id.personal_carbarn);
-        carbarns=(LinearLayout)view.findViewById(R.id.personal_carbarns);
-    }
 
+        //店铺
+        line_garage=(LinearLayout)view.findViewById(R.id.line_garage);
+        line_garage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyUser user = BmobUser.getCurrentUser(context,MyUser.class);
+                BmobQuery<Store> query = new BmobQuery<Store>();
+                query.addWhereEqualTo("myUser", user);
+                query.findObjects(context, new FindListener<Store>() {
+                    @Override
+                    public void onSuccess(List<Store> list) {
+
+                        if(list.size()!=0){
+                            Intent it1 =new Intent(context,MyShop.class);
+                            startActivity(it1);
+                            show("店铺");
+                        }else {
+                            Intent it = new Intent(context,MyGarage.class);
+                            startActivity(it);
+                            show("添加店铺");
+                        }
+                    }
+
+                    @Override
+                    public void onError(int i, String s) {
+
+                    }
+                });
+            }
+        });
+
+        txt_about=(LinearLayout)view.findViewById(R.id.txt_about);
+        txt_about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it=new Intent(context,MyAbout.class);
+                startActivity(it);
+            }
+        });
+
+        return view;
+    }
 
     public void show(String msg){
         Toast.makeText(context,"提示信息："+msg,Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public void onClick(View v) {
-        if (v.getId()==R.id.line_alter){
-            Toast.makeText(context, "点击修改密码！", Toast.LENGTH_SHORT).show();
-            it = new Intent(context, MyAlter.class);
-            startActivity(it);
-        }else if (v.getId()==R.id.img_head){
-            it = new Intent(context, MyInformation.class);
-            startActivity(it);
-        }else if (v.getId()==R.id.btn_quit){
-            Toast.makeText(context, "退出成功！", Toast.LENGTH_SHORT).show();
-            BmobUser.logOut(context);   //清除缓存用户对象
-            it = new Intent(context, MainActivity.class);
-            startActivity(it);
-        }else if (v.getId()==R.id.line_garage){
-            Toast.makeText(context, "点击收藏店铺！", Toast.LENGTH_SHORT).show();
-
-            MyUser user = BmobUser.getCurrentUser(context,MyUser.class);
-            BmobQuery<Store> query = new BmobQuery<Store>();
-            query.addWhereEqualTo("myUser", user);
-            query.findObjects(context, new FindListener<Store>() {
-                @Override
-                public void onSuccess(List<Store> list) {
-                    if (list.size() != 0) {
-                        it = new Intent(context, MyShop.class);
-                        startActivity(it);
-                        show("店铺");
-                    } else {
-                        it = new Intent(context, MyGarage.class);
-                        startActivity(it);
-                        show("添加店铺");
-                    }
-                }
-                @Override
-                public void onError(int i, String s) {
-
-                }
-            });
-        }else if (v.getId()==R.id.txt_about){
-
-            it = new Intent(context, MyAbout.class);
-            startActivity(it);
-        }else if (v.getId()==R.id.personal_carbarns){
-            it=new Intent(context,My_carbarn.class);
-            startActivity(it);
-        }
-    }
 }

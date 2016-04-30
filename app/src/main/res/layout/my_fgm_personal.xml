@@ -76,13 +76,6 @@
             android:layout_marginTop="9dp"
             android:background="#ffffff">
 
-
-
-
-
-
-
-
         </LinearLayout>
 
 
@@ -97,7 +90,7 @@
         android:background="#ffffff">
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center"
             android:layout_weight="1"
@@ -137,13 +130,10 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_gravity="center"
-            android:clickable="true"
-            android:id="@+id/personal_carbarns"
-            android:background="@drawable/tv_color"
             >
 
             <LinearLayout
@@ -154,9 +144,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/personal_carbarn"
+                    android:id="@+id/txt_garage"
                     android:text="0"
-
                     android:layout_gravity="center"
                     />
 
@@ -168,6 +157,8 @@
                     />
 
             </LinearLayout>
+
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -181,7 +172,7 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_gravity="center"
@@ -224,7 +215,7 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_weight="1"
             android:clickable="true"
@@ -315,6 +306,7 @@
                     android:textColor="#b2b2b2" />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/line_attestation"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="49dp"
@@ -325,7 +317,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="账户绑定"
+                    android:text="实名认证"
                     android:textSize="15dp"
                     android:layout_marginTop="14dp"
                     android:id="@+id/textView2" />

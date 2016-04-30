@@ -29,7 +29,7 @@ public class MyRegister extends Activity {
     private SharedPreferences sp;
     private EditText sjh;
     private EditText mima;
-    private CheckBox cb_remeber_pwd;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,15 +39,12 @@ public class MyRegister extends Activity {
         sp=getSharedPreferences("config",MODE_PRIVATE);//初始化sp
         sjh=(EditText)findViewById(R.id.sjh);
         mima=(EditText)findViewById(R.id.mima);
-        cb_remeber_pwd=(CheckBox)findViewById(R.id.cb_remeber_pwd);
 
         //获取sp里面存储的数据
         String savedsjh=sp.getString("sjh","");
         String savedpassword=sp.getString("password","");
         sjh.setText(savedsjh);
         mima.setText(savedpassword);
-
-
 
     }
     public void registered(View view){
@@ -77,7 +74,6 @@ public class MyRegister extends Activity {
                 startActivity(it);
             }
         });
-
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,7 +89,6 @@ public class MyRegister extends Activity {
     public void register(View view){
         EditText edt_mima = (EditText)findViewById(R.id.mima);
         EditText editText = (EditText)findViewById(R.id.sjh);
-
         BmobUser user = new BmobUser();
         user.setUsername(editText.getText().toString().trim());
         user.setPassword(edt_mima.getText().toString().trim());
@@ -111,16 +106,6 @@ public class MyRegister extends Activity {
                 Toast.makeText(MyRegister.this, "登录失败", Toast.LENGTH_SHORT).show();
             }
         });
-        String phone=sjh.getText().toString();
-        String password=mima.getText().toString();
-
-
-        if(cb_remeber_pwd.isChecked()){
-            SharedPreferences.Editor edit=sp.edit();
-            edit.putString("sjh",phone);
-//            edit.putString("password",);
-
-        }
 
 
     }

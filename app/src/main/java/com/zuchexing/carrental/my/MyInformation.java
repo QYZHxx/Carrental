@@ -34,6 +34,8 @@ public class MyInformation extends Activity {
     EditText edt_hobby;
     EditText edt_email;
     TextView txt_name;
+    EditText edt_age;
+    EditText edt_birthday;
 
     //
         /* 头像文件 */
@@ -76,6 +78,9 @@ public class MyInformation extends Activity {
         editText.setText(user.getIntroduce());
         edt_email.setText(user.getEmail());
         txt_name.setText(user.getUsername());
+        edt_age.setText(user.getAge());
+        edt_birthday.setText(user.getBirthday());
+
     }
 
     public void savee(View v){
@@ -85,6 +90,8 @@ public class MyInformation extends Activity {
         EditText edt_profession=(EditText)findViewById(R.id.edt_profession);
         EditText edt_hobby=(EditText)findViewById(R.id.edt_hobby);
         EditText edt_email=(EditText)findViewById(R.id.edt_email);
+        EditText edt_birthday=(EditText)findViewById(R.id.edt_birthday);
+        EditText edt_age=(EditText)findViewById(R.id.edt_age);
 
 //        ImageView img_head=(ImageView)findViewById(R.id.img_head);
         MyUser user = BmobUser.getCurrentUser(MyInformation.this,MyUser.class);
@@ -95,6 +102,8 @@ public class MyInformation extends Activity {
         user.setLikes(edt_hobby.getText().toString());
         user.setIntroduce(editText.getText().toString());
         user.setEmail(edt_email.getText().toString());
+        user.setAge(edt_age.getText().toString());
+        user.setBirthday(edt_birthday.getText().toString());
 //        user.setHeadPortrait(img_head.);
         user.update(MyInformation.this, new UpdateListener() {
             @Override
@@ -108,19 +117,15 @@ public class MyInformation extends Activity {
             }
         });
 
-
-
         BmobUser user1=new BmobUser();
         user1.setEmail(edt_email.getText().toString());
         user1.update(MyInformation.this, new UpdateListener() {
             @Override
             public void onSuccess() {
-
             }
 
             @Override
             public void onFailure(int i, String s) {
-
             }
         });
 
@@ -134,7 +139,6 @@ public class MyInformation extends Activity {
         builder.setView(isloginform);
         dialog=builder.create();
         dialog.show();
-
         Button back = (Button)isloginform.findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,9 +146,7 @@ public class MyInformation extends Activity {
                 dialog.hide();
             }
         });
-
         img_head = (ImageView) findViewById(R.id.img_head);
-
         final Button buttonLocal = (Button)isloginform.findViewById(R.id.buttonLocal);
         buttonLocal.setOnClickListener(new View.OnClickListener() {
 
@@ -153,7 +155,6 @@ public class MyInformation extends Activity {
                 choseHeadImageFromGallery();
             }
         });
-
         final Button buttonCamera = (Button)isloginform.findViewById(R.id.buttonCamera);
         buttonCamera.setOnClickListener(new View.OnClickListener() {
 

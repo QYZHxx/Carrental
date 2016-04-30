@@ -49,9 +49,6 @@ public class MyCode extends Activity{
         });
     }
 
-
-
-
     public void acquire(View view){
         String phone= edt_phone.getText().toString().trim();//得到输入的手机号码
         BmobSMS.requestSMSCode(MyCode.this, phone, "SMS", new RequestSMSCodeListener() {
@@ -66,7 +63,6 @@ public class MyCode extends Activity{
         });
 
     }
-
 
     public void reset(View view){
         String code = edt_code.getText().toString().trim();//得到验证码

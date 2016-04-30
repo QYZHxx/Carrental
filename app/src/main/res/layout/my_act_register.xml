@@ -59,7 +59,7 @@
         android:orientation="horizontal"
         >
         <EditText
-            android:layout_width="340dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="请输入密码"
             android:inputType="textPassword"
@@ -67,10 +67,7 @@
             android:id="@+id/mima"
             android:layout_marginTop="1dp"
             android:background="#ffffff" />
-        <CheckBox
-            android:id="@+id/cb_remeber_pwd"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+
 
     </LinearLayout>
 

@@ -19,6 +19,25 @@ public class MyUser extends BmobUser {//用户拓展类
     private String   likes;             //兴趣爱好
     private BmobFile headPortrait;      //头像
 
+    public String getBirthday() {
+        return Birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        Birthday = birthday;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    private String Birthday;
+    private String age;
+
     public BmobFile getHeadPortrait() {
         return headPortrait;
     }
