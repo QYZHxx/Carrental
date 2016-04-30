@@ -1,8 +1,10 @@
 package com.zuchexing.carrental.map;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
@@ -26,13 +28,17 @@ import com.zuchexing.carrental.bmob.ICar;
 import com.zuchexing.carrental.car_information;
 import com.zuchexing.carrental.customlayout.TitleLayout;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
  * Created by 情谊纵横 on 2016/4/19.
  */
 //地图搜索周边车辆
-public class MapSearch extends AppCompatActivity implements IMap, ICar, AMap.InfoWindowAdapter, AMap.OnInfoWindowClickListener {
+public class MapSearch extends AppCompatActivity implements IMap, ICar, AMap.InfoWindowAdapter, AMap.OnInfoWindowClickListener, AMap.OnMapScreenShotListener {
 
 
     AMapLocation mapLocation;
@@ -97,6 +103,19 @@ public class MapSearch extends AppCompatActivity implements IMap, ICar, AMap.Inf
         aMap.setOnInfoWindowClickListener(this);
 
         mapUtil.stopLocation();//停止定位
+        // 设置截屏监听接口，截取地图可视区域
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                aMap.getMapScreenShot(MapSearch.this);
+            }
+        }).start();
+
         System.out.println("停止定位");
 
     }
@@ -183,7 +202,7 @@ public class MapSearch extends AppCompatActivity implements IMap, ICar, AMap.Inf
         }
 
         name.setText(car.getCarName());
-        price.setText("￥"+car.getCarRentPrice());
+        price.setText("￥" + car.getCarRentPrice());
         return view;
     }
 
@@ -197,5 +216,43 @@ public class MapSearch extends AppCompatActivity implements IMap, ICar, AMap.Inf
         it.putExtras(bundle);
         startActivity(it);
         System.out.println(car.getCarName());
+    }
+
+
+    /**
+     * 截屏回调方法
+     */
+    @Override
+    public void onMapScreenShot(Bitmap bitmap) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+        try {
+            // 保存在SD卡根目录下，图片为png格式。
+            FileOutputStream fos = new FileOutputStream(
+                    Environment.getExternalStorageDirectory() + "/test_map"
+                             + ".png");
+            boolean b = bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
+            try {
+                fos.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if (b)
+                System.out.println("截屏成功");
+            else {
+                System.out.println("截屏失败");
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onMapScreenShot(Bitmap bitmap, int i) {
+
     }
 }

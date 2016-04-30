@@ -6,10 +6,10 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:background="#ffffff"
-        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="35dp">
+        android:layout_height="30dp"
+        android:background="#ffffff"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/city_name"
@@ -21,39 +21,123 @@
             android:textSize="18sp" />
 
         <TextView
-            android:layout_marginRight="60dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
+            android:layout_marginRight="60dp"
             android:layout_weight="1"
             android:gravity="center"
             android:text="租车行"
             android:textSize="20sp"
             android:textStyle="italic" />
     </LinearLayout>
+
     <FrameLayout
         android:id="@+id/advert_frag"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/lookup_btn_cx"
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#ffffff"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="立即找车" />
+        android:layout_height="130dp"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btn_map_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="地图查询" />
+        <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_car_store"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="店铺查询" />
+            <LinearLayout
+                android:id="@+id/lookup_car_find"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_weight="1">
 
+                <ImageView
+                    android:layout_marginLeft="15dp"
+                    android:layout_gravity="center"
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/car_find" />
+
+                <TextView
+                    android:paddingLeft="5dp"
+                    android:textColor="#4a4545"
+                    android:textSize="19sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="立即找车" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5px"
+                android:background="#a09a9a"/>
+            <LinearLayout
+                android:id="@+id/lookup_store_find"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_marginLeft="15dp"
+                    android:layout_gravity="center"
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/store_find" />
+
+                <TextView
+                    android:paddingLeft="5dp"
+                    android:textColor="#4a4545"
+                    android:textSize="19sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="搜索车铺" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="0.5px"
+            android:layout_height="match_parent"
+            android:background="#a09a9a"/>
+        <LinearLayout
+            android:id="@+id/btn_map_search"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/lookup_map"
+                android:padding="10dp"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/b" />
+
+            <TextView
+                android:id="@+id/lookup_address"
+                android:ellipsize="end"
+                android:maxEms="28"
+                android:singleLine="true"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:drawableLeft="@drawable/dingwei"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="地址"
+                android:textColor="#a9b7b7" />
+        </LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -63,7 +147,7 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:layout_marginLeft="6dp"
             android:gravity="center"
             android:text="猜你喜欢"
