@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import com.zuchexing.carrental.bmob.Car;
+import com.zuchexing.carrental.bmob.MyUser;
 
 public class car_information extends AppCompatActivity implements View.OnClickListener{
     private TextView carName;
@@ -26,6 +27,7 @@ public class car_information extends AppCompatActivity implements View.OnClickLi
     private Button ding;   //开始订购
     private LinearLayout layout;
     private ImageView image1;
+    Car car;
     Intent it;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +50,7 @@ public class car_information extends AppCompatActivity implements View.OnClickLi
         layout=(LinearLayout)findViewById(R.id.Car_information_layout);
         image1=(ImageView)findViewById(R.id.car_image1);
 
-        Car car=(Car)getIntent().getExtras().getSerializable("Car");
+        car=(Car)getIntent().getExtras().getSerializable("Car");
 //
 //        bundle.putString("car_name", lists.get(position).getCarName());
 //        bundle.putString("car_price", lists.get(position).getCarRentPrice() + "");
@@ -83,10 +85,15 @@ public class car_information extends AppCompatActivity implements View.OnClickLi
         }
 
     }
+    //点击将该数据的状态改变
 
     @Override
     public void onClick(View v) {
         it=new Intent(car_information.this,order_carrent.class);
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("cars",car);
+        System.out.println("传过去名字:"+car.getCarName());
+        it.putExtras(bundle);
         startActivity(it);
     }
 }

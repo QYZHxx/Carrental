@@ -9,13 +9,23 @@
         android:layout_height="wrap_content"
         android:id="@+id/title"
         />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdge="vertical"
+        android:scrollbars="vertical"
+        >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="1dp"
         android:clickable="true"
-        android:background="@drawable/btn_color"
         >
         <TextView
             android:layout_marginRight="1dp"
@@ -36,14 +46,16 @@
             android:layout_weight="1"
             android:textSize="15dp"
             android:background="#FFFFFF"
+            android:id="@+id/car_register_boradnum"
             />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:clickable="true"
-        android:id="@+id/carregister_brandselect"
+        android:id="@+id/car_register_brandselect"
+
         >
     <TextView
         android:layout_width="wrap_content"
@@ -52,29 +64,31 @@
         android:textSize="15dp"
         android:background="#FFFFFF"
         android:gravity="center"
+
         />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:text="请点击选择车辆型号"
+        android:text="未选择"
         android:gravity="right|center"
         android:layout_gravity="right"
         android:background="#ffffff"
         android:textSize="15dp"
         android:layout_weight="1"
+        android:id="@+id/car_register_car_type"
         android:drawableEnd="@drawable/right"
+        android:paddingRight="10dp"
         />
         </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-
+        android:layout_marginTop="5dp"
         >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:text="行驶证所有人"
+            android:text="车辆行驶距离(KM)"
             android:textSize="15dp"
             android:background="#FFFFFF"
             android:gravity="center"
@@ -82,20 +96,107 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:hint="请输入驾驶人名字"
+            android:hint="行驶距离"
             android:gravity="right|center"
             android:layout_weight="7"
             android:textSize="15dp"
             android:background="#FFFFFF"
-            android:id="@+id/carregister_name"
+            android:id="@+id/car_register_carKm"
+            android:paddingRight="10dp"
+            android:phoneNumber="true"
             />
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:clickable="true"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="车辆载人数"
+                android:textSize="15dp"
+                android:background="#FFFFFF"
+                android:gravity="center"
+
+                />
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:hint="座位:4/6/8人座"
+                android:gravity="right|center"
+                android:layout_gravity="right"
+                android:background="#ffffff"
+                android:textSize="15dp"
+                android:layout_weight="1"
+                android:id="@+id/car_register_carnum"
+                android:paddingRight="10dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:clickable="true"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="车龄(年)"
+                android:textSize="15dp"
+                android:background="#FFFFFF"
+                android:gravity="center"
+
+                />
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:hint="请输入购车时间"
+                android:gravity="right|center"
+                android:layout_gravity="right"
+                android:background="#ffffff"
+                android:textSize="15dp"
+                android:layout_weight="1"
+                android:id="@+id/car_register_carage"
+                android:paddingRight="10dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:clickable="true"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="租用价格(日)"
+                android:textSize="15dp"
+                android:background="#FFFFFF"
+                android:gravity="center"
+
+                />
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:hint="租用价格0-9999"
+                android:gravity="right|center"
+                android:layout_gravity="right"
+                android:background="#ffffff"
+                android:textSize="15dp"
+                android:layout_weight="1"
+                android:id="@+id/car_register_carRentPrice"
+                android:paddingRight="10dp"
+                android:phoneNumber="true"
+                />
         </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:clickable="true"
-        android:id="@+id/car_register_address"
+
         >
         <TextView
             android:layout_width="wrap_content"
@@ -115,17 +216,23 @@
             android:background="#ffffff"
             android:textSize="15dp"
             android:layout_weight="1"
-            android:drawableEnd="@drawable/right"
-
+            android:id="@+id/car_register_address"
+            android:paddingRight="10dp"
             />
     </LinearLayout>
+
     <Button
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="提交"
+        android:textSize="20dp"
         android:textColor="#FFFFFF"
         android:background="#d98824"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
+        android:id="@+id/car_register_submit"
         />
+    </LinearLayout>
+
+    </ScrollView>
 </LinearLayout>

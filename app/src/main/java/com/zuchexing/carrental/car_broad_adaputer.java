@@ -1,5 +1,6 @@
 package com.zuchexing.carrental;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,14 +24,16 @@ public class car_broad_adaputer extends BaseAdapter {
         LayoutInflater inflater;
         String[] str;
         int positions;
+        Activity activity;
     TextView tv;
     MyGridview_Adaputer adaputer;
 
     private ArrayList<String[]> list=new ArrayList<>();
 
-        public car_broad_adaputer(Context context,ArrayList<HashMap<String,Object>> data){
+        public car_broad_adaputer(Context context,Activity activity,ArrayList<HashMap<String,Object>> data){
             this.context=context;
             this.data=data;
+            this.activity=activity;
             inflater=LayoutInflater.from(context);
         }
         @Override
@@ -61,9 +64,9 @@ public class car_broad_adaputer extends BaseAdapter {
                 holder = (ViewHolder) convertView.getTag();
             }
 
-            positions=position;
+            System.out.println("数据");
             holder.leter.setText(data.get(position).get("letter") + "");
-            adaputer=new MyGridview_Adaputer(context,(String[])data.get(position).get("trademark"));
+            adaputer=new MyGridview_Adaputer(context,activity,(String[])data.get(position).get("trademark"));
             holder.brad_graidview.setAdapter(adaputer);
 
             return convertView;

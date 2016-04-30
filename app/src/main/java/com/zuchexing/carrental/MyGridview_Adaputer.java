@@ -1,12 +1,15 @@
 package com.zuchexing.carrental;
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
+        import android.app.Activity;
+        import android.content.Context;
+        import android.content.Intent;
+        import android.os.Bundle;
+        import android.view.LayoutInflater;
+        import android.view.View;
+        import android.view.ViewGroup;
+        import android.widget.BaseAdapter;
+        import android.widget.TextView;
+        import android.widget.Toast;
 
 /**
  * Created by Administrator on 2016/4/28 0028.
@@ -15,9 +18,11 @@ public class MyGridview_Adaputer extends BaseAdapter {
     Context context;
     LayoutInflater inflater;
     String [] strs;
-    public MyGridview_Adaputer(Context context,String[] strs){
+    Activity activity;
+    public MyGridview_Adaputer(Context context,Activity activity,String[] strs){
         this.context=context;
         this.strs=strs;
+        this.activity=activity;
         inflater=LayoutInflater.from(context);
     }
     @Override
@@ -51,12 +56,14 @@ public class MyGridview_Adaputer extends BaseAdapter {
             holder.textView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(context,"点击:"+holder.textView.getText(),Toast.LENGTH_SHORT).show();
+                    Intent it=new Intent();
+                    it.putExtra("cars",holder.textView.getText());
+                    activity.setResult(Activity.RESULT_OK, it);
+                    Toast.makeText(context,""+holder.textView.getText(),Toast.LENGTH_SHORT).show();
+                    activity.finish();
                 }
             });
         }
-
-
         return convertView;
     }
     public class ViewHolder{

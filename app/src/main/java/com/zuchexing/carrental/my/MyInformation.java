@@ -1,32 +1,40 @@
 package com.zuchexing.carrental.my;
 
-
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.zuchexing.carrental.R;
+import com.zuchexing.carrental.bmob.MyUser;
 import java.io.File;
-
+import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.listener.UpdateListener;
 
 
 /**
- * Created by Administrator on 2016/4/21 0021.
+ * Created by 情谊纵横 on 2016/4/21
  */
-public class MyInformation extends ActionBarActivity {
+public class MyInformation extends Activity {
 
+    EditText editText;
+    EditText edt_nickname;
+    EditText edt_education;
+    EditText edt_profession;
+    EditText edt_hobby;
+    EditText edt_email;
+    TextView txt_name;
 
-    Drawable drawable ;
     //
         /* 头像文件 */
     final String IMAGE_FILE_NAME = "temp_head_image.jpg";
@@ -43,18 +51,85 @@ public class MyInformation extends ActionBarActivity {
     private AlertDialog dialog;
 
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.setContentView(R.layout.my_information);
+        this.setContentView(R.layout.my_act_information);
+
+        xs();
+    }
+
+    public void xs(){
+        edt_email=(EditText)findViewById(R.id.edt_email);
+        editText = (EditText)findViewById(R.id.editText);
+        edt_nickname=(EditText)findViewById(R.id.edt_nickname);
+        edt_education=(EditText)findViewById(R.id.edt_education);
+        edt_profession=(EditText)findViewById(R.id.edt_profession);
+        edt_hobby=(EditText)findViewById(R.id.edt_hobby);
+        txt_name=(TextView)findViewById(R.id.txt_name);
+
+        MyUser user = BmobUser.getCurrentUser(MyInformation.this,MyUser.class);
+        edt_hobby.setText(user.getLikes());
+        edt_profession.setText(user.getPost());
+        edt_education.setText(user.getEducation());
+        edt_nickname.setText(user.getNickname());
+        editText.setText(user.getIntroduce());
+        edt_email.setText(user.getEmail());
+        txt_name.setText(user.getUsername());
+    }
+
+    public void savee(View v){
+        EditText editText = (EditText)findViewById(R.id.editText);
+        EditText edt_nickname=(EditText)findViewById(R.id.edt_nickname);
+        EditText edt_education=(EditText)findViewById(R.id.edt_education);
+        EditText edt_profession=(EditText)findViewById(R.id.edt_profession);
+        EditText edt_hobby=(EditText)findViewById(R.id.edt_hobby);
+        EditText edt_email=(EditText)findViewById(R.id.edt_email);
+
+//        ImageView img_head=(ImageView)findViewById(R.id.img_head);
+        MyUser user = BmobUser.getCurrentUser(MyInformation.this,MyUser.class);
+//        System.out.println(user.getObjectId()+"id");
+        user.setNickname(edt_nickname.getText().toString());
+        user.setEducation(edt_education.getText().toString());
+        user.setPost(edt_profession.getText().toString());
+        user.setLikes(edt_hobby.getText().toString());
+        user.setIntroduce(editText.getText().toString());
+        user.setEmail(edt_email.getText().toString());
+//        user.setHeadPortrait(img_head.);
+        user.update(MyInformation.this, new UpdateListener() {
+            @Override
+            public void onSuccess() {
+                Toast.makeText(MyInformation.this, "保存成功", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+                Toast.makeText(MyInformation.this, "保存失败", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+        BmobUser user1=new BmobUser();
+        user1.setEmail(edt_email.getText().toString());
+        user1.update(MyInformation.this, new UpdateListener() {
+            @Override
+            public void onSuccess() {
+
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+
+            }
+        });
+
+
 
     }
 
     public void head(View v){
-
-        LinearLayout isloginform=(LinearLayout)getLayoutInflater().inflate(R.layout.my_image, null);
+        LinearLayout isloginform=(LinearLayout)getLayoutInflater().inflate(R.layout.my_nvt_image, null);
         final AlertDialog.Builder builder=new AlertDialog.Builder(this);
         builder.setView(isloginform);
         dialog=builder.create();
@@ -197,5 +272,6 @@ public class MyInformation extends ActionBarActivity {
             return false;
         }
     }
+
 
 }
