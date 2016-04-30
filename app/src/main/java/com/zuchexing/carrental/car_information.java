@@ -1,5 +1,7 @@
 package com.zuchexing.carrental;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +14,9 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.zuchexing.carrental.bmob.Car;
 import com.zuchexing.carrental.bmob.MyUser;
+import com.zuchexing.carrental.my.MyRegister;
+
+import cn.bmob.v3.BmobUser;
 
 public class car_information extends AppCompatActivity implements View.OnClickListener{
     private TextView carName;
@@ -29,10 +34,12 @@ public class car_information extends AppCompatActivity implements View.OnClickLi
     private ImageView image1;
     Car car;
     Intent it;
+    MyUser user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_information);
+       user= BmobUser.getCurrentUser(this, MyUser.class);
         init();
     }
     public void init(){
@@ -89,11 +96,30 @@ public class car_information extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-        it=new Intent(car_information.this,order_carrent.class);
-        Bundle bundle=new Bundle();
-        bundle.putSerializable("cars",car);
-        System.out.println("传过去名字:"+car.getCarName());
-        it.putExtras(bundle);
-        startActivity(it);
+        if (user!=null) {
+            it = new Intent(car_information.this, order_carrent.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("cars", car);
+            System.out.println("传过去名字:" + car.getCarName());
+            it.putExtras(bundle);
+            startActivity(it);
+        }else{
+            AlertDialog dialog=null;
+            AlertDialog.Builder builder=new AlertDialog.Builder(this);
+            //添加功能
+            builder.setTitle("亲,你没有登陆哟!");
+            builder.setIcon(R.drawable.heng);
+            builder.setNegativeButton("取消", null);
+            builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent jump=new Intent(car_information.this,MyRegister.class);
+                    startActivity(jump);
+                }
+            });
+            builder.setMessage("我们去登陆吧!");
+            dialog=builder.create();
+            dialog.show();
+        }
     }
 }

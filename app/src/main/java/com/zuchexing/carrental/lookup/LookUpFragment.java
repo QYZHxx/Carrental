@@ -135,10 +135,14 @@ public class LookUpFragment extends Fragment implements View.OnClickListener, IM
     }
 
     public void getMap() {
+
        String path= Environment.getExternalStorageDirectory() + "/test_map"
                 + ".png";
         Bitmap bit =BitmapFactory.decodeFile(path);
-        image_map.setImageBitmap(bit);
+        if (bit!=null){
+            image_map.setImageBitmap(bit);
+        }
+
        // Picasso.with(context).load(new File(path)).into(image_map);
     }
 

@@ -57,8 +57,6 @@ public class CarOwnerFragment extends Fragment implements View.OnClickListener {
         user= BmobUser.getCurrentUser(context,MyUser.class);
 
         return view;
-
-        //jhj
     }
 
 

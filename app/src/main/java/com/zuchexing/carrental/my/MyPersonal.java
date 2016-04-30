@@ -56,9 +56,6 @@ public class MyPersonal extends Fragment implements View.OnClickListener{
       view = inflater.inflate(R.layout.my_fgm_personal, null);
 
         initview();
-
-
-
         return view;
     }
     public void initview(){
@@ -84,6 +81,7 @@ public class MyPersonal extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if (v.getId()==R.id.line_alter){
+            Toast.makeText(context, "点击修改密码！", Toast.LENGTH_SHORT).show();
             it = new Intent(context, MyAlter.class);
             startActivity(it);
         }else if (v.getId()==R.id.img_head){
@@ -95,13 +93,14 @@ public class MyPersonal extends Fragment implements View.OnClickListener{
             it = new Intent(context, MainActivity.class);
             startActivity(it);
         }else if (v.getId()==R.id.line_garage){
+            Toast.makeText(context, "点击收藏店铺！", Toast.LENGTH_SHORT).show();
+
             MyUser user = BmobUser.getCurrentUser(context,MyUser.class);
             BmobQuery<Store> query = new BmobQuery<Store>();
             query.addWhereEqualTo("myUser", user);
             query.findObjects(context, new FindListener<Store>() {
                 @Override
                 public void onSuccess(List<Store> list) {
-
                     if (list.size() != 0) {
                         it = new Intent(context, MyShop.class);
                         startActivity(it);
@@ -118,6 +117,7 @@ public class MyPersonal extends Fragment implements View.OnClickListener{
                 }
             });
         }else if (v.getId()==R.id.txt_about){
+
             it = new Intent(context, MyAbout.class);
             startActivity(it);
         }else if (v.getId()==R.id.personal_carbarns){
