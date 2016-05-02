@@ -18,6 +18,7 @@ import com.zuchexing.carrental.MainActivity;
 import com.zuchexing.carrental.R;
 import com.zuchexing.carrental.bmob.MyUser;
 import com.zuchexing.carrental.bmob.Store;
+import com.zuchexing.carrental.order_table;
 
 import java.util.List;
 
@@ -28,7 +29,7 @@ import cn.bmob.v3.listener.FindListener;
 /**
  * Created by 情谊纵横 on 2016/4/20
  */
-public class MyPersonal extends Fragment {
+public class MyPersonal extends Fragment implements View.OnClickListener {
 
     private ImageView img_head;
     private Button btn_quit;
@@ -38,7 +39,7 @@ public class MyPersonal extends Fragment {
     LinearLayout txt_about;
     LinearLayout line_alter;
     LinearLayout line_attestation;
-
+    TextView personal_order;
 
     Context context;
     private AlertDialog dialog;
@@ -53,7 +54,8 @@ public class MyPersonal extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.my_fgm_personal, null);
-
+        personal_order=(TextView)view.findViewById(R.id.personal_order);
+        personal_order.setOnClickListener(this);
         //实名认证
         line_attestation=(LinearLayout)view.findViewById(R.id.line_attestation);
         line_attestation.setOnClickListener(new View.OnClickListener() {
@@ -146,5 +148,12 @@ public class MyPersonal extends Fragment {
     public void show(String msg){
         Toast.makeText(context,"提示信息："+msg,Toast.LENGTH_SHORT).show();
     }
-
+    Intent it;
+    @Override
+    public void onClick(View v) {
+        if (v.getId()==R.id.personal_order){
+           it=new Intent(context, order_table.class);
+            startActivity(it);
+        }
+    }
 }

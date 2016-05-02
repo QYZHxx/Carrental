@@ -4,31 +4,11 @@
     android:layout_height="match_parent"
     android:background="#fafafa"
     >
-
-    <LinearLayout
-        android:orientation="horizontal"
+    <com.zuchexing.carrental.customlayout.TitleLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#ffffff">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/img_back"
-            android:onClick="back"
-            android:src="@drawable/my_img_back"
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="5dp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/table"
-            android:text="提交车辆资料"
-            android:textSize="22dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="90dp"
-            android:textColor="#282828" />
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:id="@+id/title"
+        ></com.zuchexing.carrental.customlayout.TitleLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

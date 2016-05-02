@@ -17,6 +17,7 @@
         android:layout_height="150dp"
         android:src="#97bb99"
         android:clickable="true"
+        android:id="@+id/carowner_image"
         />
     <LinearLayout
         android:layout_width="match_parent"

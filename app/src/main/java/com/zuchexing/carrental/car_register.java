@@ -1,10 +1,15 @@
 package com.zuchexing.carrental;
 
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,11 +18,17 @@ import com.amap.api.location.AMapLocation;
 import com.zuchexing.carrental.bmob.Car;
 import com.zuchexing.carrental.bmob.MyUser;
 import com.zuchexing.carrental.customlayout.TitleLayout;
+import com.zuchexing.carrental.imageupload.GetPathFromUri4kitkat;
 import com.zuchexing.carrental.map.IMap;
 import com.zuchexing.carrental.map.MapUtil;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.UploadFileListener;
 
 //
 public class car_register extends AppCompatActivity implements View.OnClickListener,IMap{
@@ -38,7 +49,9 @@ public class car_register extends AppCompatActivity implements View.OnClickListe
     MyUser myUser;
     MapUtil map;
     AMapLocation location;
-
+    ImageView car_pic;
+    String path;
+    BmobFile bmobFile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,9 +61,14 @@ public class car_register extends AppCompatActivity implements View.OnClickListe
         map=new MapUtil(this,this);
         map.startLocation();
 
-        Intent it=new Intent(NETWORK_STATS_SERVICE);
-        startService(it);
+
     }
+
+    @Override
+    public void onActivityReenter(int resultCode, Intent data) {
+        super.onActivityReenter(resultCode, data);
+    }
+
     public void initview(){
         title.setIsHidderCollateImage(true);
         title.setIsHidderServeImage(true);
@@ -68,6 +86,8 @@ public class car_register extends AppCompatActivity implements View.OnClickListe
         brandselect.setOnClickListener(this);
         submit.setOnClickListener(this);
 
+        car_pic=(ImageView)findViewById(R.id.register_car_pic);
+
     }
     @Override
     public void onClick(View v) {
@@ -79,21 +99,27 @@ public class car_register extends AppCompatActivity implements View.OnClickListe
             String identity="[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}([0-9]|X)";
             if (broad_num.getText()!=null&&broad_num.getText().toString().matches(carnumRegex)){
                 if (car_type.getText()!=null){
-                    if (car_km.getText()!=null&&Integer.parseInt(car_km.getText()+"")>0&&Integer.parseInt(car_km.getText()+"")<9999){
+                    if (car_km.getText()!=null&&Integer.parseInt(car_km.getText()+"")>0&&Integer.parseInt(car_km.getText()+"")<100000){
                         if (car_num!=null){
                             if (car_rentprice!=null){
                                 if (car_address!=null){
+                                    if (car_pic!=null){
                                             myUser= BmobUser.getCurrentUser(this,MyUser.class);
                                             car=new Car();
-                                            car.setMyUser(myUser);
-                                            car.setCarNum(broad_num.getText().toString());
-                                            car.setCarName(car_type.getText().toString());
-                                            car.setCarAddress(car_address.getText().toString());
-                                            car.setCarKm(Integer.valueOf(car_km.getText().toString()));
-                                            car.setCarCity(location.getCity().toString());
+                                            car.setMyUser(myUser);              //用户
+                                            System.out.println(myUser.getName());
+                                            car.setCarNum(broad_num.getText().toString());      //车牌号
+                                            car.setCarName(car_type.getText().toString());      //车辆名
+                                            car.setCarAddress(car_address.getText().toString());    //交车地址
+                                            car.setCarKm(Integer.valueOf(car_km.getText().toString())); //车距
+                                            car.setCarCity(location.getCity().toString());      //当前城市地址
                                             car.setCarLatitude(location.getLatitude() + "");       //纬度
                                             car.setCarLongitude(location.getLongitude() + "");    //纬度
                                             car.setCarState("0x11");
+                                            car.setCarRentPrice(Integer.valueOf(car_rentprice.getText().toString()));
+                                            car.setCarVehices(Integer.valueOf(car_num.getText().toString()));
+                                            car.setCarAge(Integer.valueOf(car_age.getText().toString()));
+                                            car.setCarImage(bmobFile);
                                             car.save(this, new SaveListener() {
                                                 @Override
                                                 public void onSuccess() {
@@ -104,10 +130,14 @@ public class car_register extends AppCompatActivity implements View.OnClickListe
                                                     Toast.makeText(car_register.this,"失败",Toast.LENGTH_SHORT).show();
                                                 }
                                             });
-                                            //跳转页面 提示发布成功发布页面
-                                            Intent it=new Intent(); //提示发布成功   并且跳转到车库
 
-                                            this.finish();
+//                                            跳转页面 提示发布成功发布页面
+//                                            Intent it=new Intent(); //提示发布成功   并且跳转到车库
+
+                                            }else{
+                                        Toast.makeText(this,"请上传您车辆的图片",Toast.LENGTH_SHORT).show();
+
+                                    }
                                         }else{
                                             Toast.makeText(this,"请开启网络获取您目前的交车地点",Toast.LENGTH_SHORT).show();
 
@@ -142,14 +172,53 @@ public class car_register extends AppCompatActivity implements View.OnClickListe
        }else if (requestCode==2&&resultCode==RESULT_OK){
             String str=data.getStringExtra("xx");
            profession.setText(str);
+       }else if (requestCode==3&&resultCode==RESULT_OK){
+           Uri uri=data.getData();
+           ContentResolver resolver=this.getContentResolver();
+           path= GetPathFromUri4kitkat.getPath(this, uri);
+           try {
+               Bitmap bitmap= BitmapFactory.decodeStream(resolver.openInputStream(uri));
+               car_pic.setImageBitmap(bitmap);
+               bmobFile=new BmobFile(new File(path));
+               System.out.println("上传图片前");
+               bmobFile.uploadblock(this, new UploadFileListener() {
+                   @Override
+                   public void onSuccess() {
 
+                       System.out.println("上传成功");
+                   }
+
+                   @Override
+                   public void onProgress(Integer value) {
+                       super.onProgress(value);
+                       System.out.println("正在上传");
+                   }
+
+                   @Override
+                   public void onFailure(int i, String s) {
+                        System.out.println("上传失败");
+                   }
+               });
+            System.out.println("上传图片后");
+           } catch (FileNotFoundException e) {
+               e.printStackTrace();
+           }
        }
-    }
 
+        super.onActivityResult(requestCode,resultCode,data);
+
+    }
+    public void tupian(View view){
+        Intent it=new Intent(Intent.ACTION_GET_CONTENT);
+        it.setType("image/*");
+        startActivityForResult(it, 3);
+
+    }
 
     @Override
     public void getAMapLocation(AMapLocation mapLocation) {
         car_address.setText(mapLocation.getCity() + mapLocation.getDistrict() + mapLocation.getStreet() + mapLocation.getStreetNum());
         location=mapLocation;
+        map.stopLocation();
     }
 }

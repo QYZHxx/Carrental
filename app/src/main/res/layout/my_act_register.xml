@@ -41,7 +41,9 @@
             android:layout_marginLeft="85dp"
             android:id="@+id/txt_registered"
             android:onClick="registered"
-            android:textColor="#666666" />
+            android:textColor="#666666"
+            android:clickable="true"
+            />
     </LinearLayout>
 
     <EditText
@@ -93,6 +95,7 @@
         android:id="@+id/txt_forget_the_password"
         android:onClick="register2"
         android:layout_gravity="center_horizontal"
+        android:clickable="true"
         android:textColor="#fe4001" />
 
 

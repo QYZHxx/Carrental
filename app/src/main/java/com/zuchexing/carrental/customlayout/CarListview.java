@@ -29,7 +29,7 @@ public class CarListview extends LinearLayout  {
     CarAdapter adapter;
     String city="";
     Context context;
-    int count=5;
+    int count=10;
     int x=0;
 //    MapUtil mapUtil;
     PullToRefreshListView plistView;

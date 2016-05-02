@@ -39,7 +39,9 @@
             android:layout_marginLeft="110dp"
             android:id="@+id/txt_register"
             android:onClick="register"
-            android:textColor="#666666" />
+            android:textColor="#666666"
+            android:clickable="true"
+            />
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"

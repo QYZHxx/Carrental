@@ -36,10 +36,11 @@ public class order_carrent extends AppCompatActivity {
     ImageView car_pic;
 
     Car car;
+    MyUser user;
     int myear;
     int mmonth;
     int mday;
-
+    Order order;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +53,6 @@ public class order_carrent extends AppCompatActivity {
     }
     public void initview(){
         car=(Car)this.getIntent().getExtras().getSerializable("cars");
-        System.out.println("当前车辆的" + car.getCarName());
         title.setIsHidderServeImage(true);
         title.setIsHidderCollateImage(true);
         title.setTitle("租赁车辆");
@@ -63,9 +63,11 @@ public class order_carrent extends AppCompatActivity {
         returntime=(TextView)findViewById(R.id.order_carrent_returntime);
         trim=(TextView)findViewById(R.id.order_carrent_trim);
         car_pic=(ImageView)findViewById(R.id.order_car_pic);
+        System.out.println("输出车辆的对象:"+car.getMyUser().getName());
+
+
         mastr_name.setText(car.getCarName() + "");
         rent.setHint(car.getCarRentPrice() + "(/日)");
-        System.out.println(car.getCarAddress()+"当前地址");
         address.setText(car.getCarAddress());
 
         if (car.getCarImage()!=null){
@@ -76,25 +78,38 @@ public class order_carrent extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+    }
+
     public void order_comit(View view){
 
         if (getcartime.getText()!=null&&getcartime.getText()!=""){
             if (returntime.getText()!=null&&returntime.getText()!=""){
-                Order order=new Order();
+               order=new Order();
                 order.setOrderCar(car);
+                System.out.println(car.getCarName());
                 order.setOrderUser(BmobUser.getCurrentUser(this, MyUser.class));
                 order.setOrderPrice(Integer.parseInt(rent.getText().toString()));
                 order.setOrderTime(Integer.parseInt(trim.getText() + ""));
+                order.setOrdergetcartime(getcartime.getText() + "");
+                order.setOrderreturntime(returntime.getText() + "");
                 order.setOrderState("0x22");
+                System.out.println(order.getOrderCar().getCarName());
                 order.save(this, new SaveListener() {
                     @Override
                     public void onSuccess() {
-                        Toast.makeText(order_carrent.this,"订单成功",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(order_carrent.this, "订单成功", Toast.LENGTH_SHORT).show();
+                        Intent jump = new Intent(order_carrent.this, order_table.class);
+                        startActivity(jump);
+                        finish();
                     }
 
                     @Override
                     public void onFailure(int i, String s) {
-                        Toast.makeText(order_carrent.this,"订单失败,请检查你的网络或者重启app",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(order_carrent.this, "订单失败,请检查你的网络或者重启app", Toast.LENGTH_SHORT).show();
                     }
                 });
             }else{
@@ -115,7 +130,7 @@ public class order_carrent extends AppCompatActivity {
             DatePickerDialog dialog=new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                    int nowday=(year*365+monthOfYear*30+dayOfMonth)-(myear*365+mmonth*30+mday);
+                    int nowday=(year*365+monthOfYear*30+dayOfMonth)-(myear*365+mmonth*30+mday)+1;
                         if (year >= myear|| monthOfYear >= mmonth || dayOfMonth >= mday) {
                             getcartime.setText(year + "年" + (monthOfYear+1) + "月" + dayOfMonth + "日");
                             myear=year;
@@ -139,14 +154,20 @@ public class order_carrent extends AppCompatActivity {
                 public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                     int nowday=(year*365+monthOfYear*30+dayOfMonth)-(myear*365+mmonth*30+mday);
                     System.out.println("nowday:"+nowday);
-                        if (nowday<=30){
+                        if (nowday>=1&&nowday<=30){
                             System.out.println("当前的时间" + year + "年" + monthOfYear + "月" + dayOfMonth + "日");
                             returntime.setText(year + "年" + (monthOfYear + 1) + "月" + dayOfMonth + "日");
-                            trim.setText((nowday + 1) + "");
-                            int sum=car.getCarRentPrice()*(nowday+1);
-                            rent.setText(sum+"");
+                            trim.setText(nowday + "");
+                            if (car.getCarRentPrice()!=null) {
+                                int sum = car.getCarRentPrice() * nowday;
+                                rent.setText(sum + "");
+                            }else{
+                                Toast.makeText(order_carrent.this,"因为您选择的金额的数据为空,所以默认将您的价格设置为100",Toast.LENGTH_SHORT).show();
+                                int sum = 100 * nowday;
+                                rent.setText(sum + "");
+                            }
                         }else{
-                            Toast.makeText(order_carrent.this,"租车时间不能超过一个月(30天)",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(order_carrent.this,"请选择正确的还车时间",Toast.LENGTH_SHORT).show();
                             returntime.setText("");
                         }
                     }

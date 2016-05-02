@@ -18,6 +18,8 @@ public class MyUser extends BmobUser {//用户拓展类
     private String   post;              //职位
     private String   likes;             //兴趣爱好
     private BmobFile headPortrait;      //头像
+    private String Birthday;
+    private String age;
 
     public String getBirthday() {
         return Birthday;
@@ -35,8 +37,7 @@ public class MyUser extends BmobUser {//用户拓展类
         this.age = age;
     }
 
-    private String Birthday;
-    private String age;
+
 
     public BmobFile getHeadPortrait() {
         return headPortrait;

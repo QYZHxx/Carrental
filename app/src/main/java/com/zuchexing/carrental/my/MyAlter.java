@@ -2,12 +2,15 @@ package com.zuchexing.carrental.my;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.zuchexing.carrental.R;
+import com.zuchexing.carrental.customlayout.TitleLayout;
+
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.UpdateListener;
 
@@ -18,7 +21,7 @@ public class MyAlter extends Activity {
     EditText old_password;
     EditText new_password;
     Button btn_alter;
-
+    TitleLayout title;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +29,10 @@ public class MyAlter extends Activity {
         old_password=(EditText)findViewById(R.id.old_password);
         new_password=(EditText)findViewById(R.id.new_password);
         btn_alter   =(Button)findViewById(R.id.btn_alter);
+        title=(TitleLayout)findViewById(R.id.title);
+        title.setIsHidderServeImage(true);
+        title.setIsHidderCollateImage(true);
+        title.setTitle("修改密码");
     }
 
     public void alter(View view){
@@ -37,9 +44,8 @@ public class MyAlter extends Activity {
                 Intent it=new Intent(MyAlter.this,MyRegister.class);
                 startActivity(it);
                 show("修改成功！");
-
+                finish();
             }
-
             @Override
             public void onFailure(int code, String msg) {
                 show("旧密码错误！");

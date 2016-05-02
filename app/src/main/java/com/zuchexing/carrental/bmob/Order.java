@@ -12,6 +12,25 @@ public class Order extends BmobObject {//订单表
     private String orderState;        //订单状态
     private Integer orderPrice;       //订单价格
     private Integer orderTime;        //有效时间
+    private String ordergetcartime;     //订单生成时间
+
+    public String getOrdergetcartime() {
+        return ordergetcartime;
+    }
+
+    public void setOrdergetcartime(String ordergetcartime) {
+        this.ordergetcartime = ordergetcartime;
+    }
+
+    public String getOrderreturntime() {
+        return orderreturntime;
+    }
+
+    public void setOrderreturntime(String orderreturntime) {
+        this.orderreturntime = orderreturntime;
+    }
+
+    private String orderreturntime;     //订单结束时间
 
     public MyUser getOrderUser() {
         return orderUser;

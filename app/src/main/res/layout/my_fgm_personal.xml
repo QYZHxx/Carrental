@@ -264,47 +264,17 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_marginTop="15dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:background="#ffffff"
         >
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="15dp"
-            android:layout_height="150dp"
-            android:background="#ffffff">
-        </LinearLayout>
-
-
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             >
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="49dp"
-                android:layout_gravity="center_horizontal"
-                android:clickable="true"
-                android:background="@drawable/tv_color"
-                >
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="紧急联系方式"
-                    android:textSize="15dp"
-                    android:layout_marginTop="14dp"
-                    android:id="@+id/textView" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="免费拿10元"
-                    android:textSize="12dp"
-                    android:layout_marginTop="13dp"
-                    android:layout_marginLeft="160dp"
-                    android:id="@+id/textView4"
-                    android:textColor="#b2b2b2" />
-            </LinearLayout>
             <LinearLayout
                 android:id="@+id/line_attestation"
                 android:orientation="horizontal"
@@ -312,15 +282,16 @@
                 android:layout_height="49dp"
                 android:layout_marginTop="1.5dp"
                 android:layout_gravity="center_horizontal"
-                android:clickable="true"
-                android:background="#ffffff">
+               >
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:text="实名认证"
                     android:textSize="15dp"
                     android:layout_marginTop="14dp"
+                    android:gravity="center|left"
                     android:id="@+id/textView2" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -328,16 +299,45 @@
                 android:layout_width="match_parent"
                 android:layout_height="49dp"
                 android:layout_marginTop="1.5dp"
-                android:clickable="true"
                 android:background="#ffffff">
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:text="驾驶行为"
                     android:textSize="15dp"
+                    android:gravity="center|left"
                     android:layout_marginTop="14dp"
                     android:id="@+id/textView3" />
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginTop="1.5dp"
+                android:layout_height="49dp"
+                android:text="我的订单"
+                android:textSize="15dp"
+                android:id="@+id/personal_order"
+                android:clickable="true"
+                android:background="#ffffff"
+                android:gravity="center|left"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_marginTop="1.5dp"
+            android:clickable="true"
+            android:background="#ffffff">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="你的订单"
+                android:textSize="15dp"
+                android:layout_marginTop="14dp"
+                android:id="@+id/personal_order_table"
+                android:clickable="true"
+
+                />
         </LinearLayout>
     </LinearLayout>
 
@@ -345,23 +345,23 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="256dp"
-        android:layout_marginTop="15dp">
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="15dp"
-            android:layout_height="256dp"
-            android:background="#ffffff">
-        </LinearLayout>
+        android:layout_marginTop="15dp"
+        android:paddingLeft="15dp"
+        android:background="#ffffff"
+        >
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="256dp">
+            android:layout_height="256dp"
+            android:background="#ffffff"
+            >
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="49dp"
                 android:clickable="true"
-                android:background="#ffffff">
+              >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

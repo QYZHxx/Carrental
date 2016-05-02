@@ -69,8 +69,10 @@ public class MyInformation extends Activity {
         edt_profession=(EditText)findViewById(R.id.edt_profession);
         edt_hobby=(EditText)findViewById(R.id.edt_hobby);
         txt_name=(TextView)findViewById(R.id.txt_name);
-
+        edt_birthday=(EditText)findViewById(R.id.edt_birthday);
         MyUser user = BmobUser.getCurrentUser(MyInformation.this,MyUser.class);
+        System.out.println("用户的数据:" + user.getAge() + "  用户的生日" + user.getBirthday());
+
         edt_hobby.setText(user.getLikes());
         edt_profession.setText(user.getPost());
         edt_education.setText(user.getEducation());
@@ -78,8 +80,7 @@ public class MyInformation extends Activity {
         editText.setText(user.getIntroduce());
         edt_email.setText(user.getEmail());
         txt_name.setText(user.getUsername());
-        edt_age.setText(user.getAge());
-        edt_birthday.setText(user.getBirthday());
+        edt_birthday.setText(user.getBirthday()+"");
 
     }
 

@@ -52,23 +52,28 @@
         </activity>
         <activity android:name=".profession_select" >
         </activity>
-        <activity android:name=".my.MyCar"/>
+        <activity android:name=".my.MyCar" />
         <activity android:name=".my.MyRegistered" />
         <activity android:name=".my.MyRegister" />
         <activity android:name=".my.MyInformation" />
-        <activity android:name=".my.MyAbout"/>
-        <activity android:name=".my.MyAlter"/>
-        <activity android:name=".my.MyCode"/>
-        <activity android:name=".my.MyGarage"/>
-        <activity android:name=".my.Mypassword"/>
-        <activity android:name=".my.MyShop"/>
-        <activity android:name=".my.MyCattestation"/>
-        <activity android:name=".my.MyPattestation"/>
-        <activity android:name=".my.MyAttestation"/>
-        <activity android:name=".my.MySattestation"/>
-
-        <activity android:name=".lookup.FindingCarStore"/>
-
+        <activity android:name=".my.MyAbout" />
+        <activity android:name=".my.MyAlter" />
+        <activity android:name=".my.MyCode" />
+        <activity android:name=".my.MyGarage" />
+        <activity android:name=".my.Mypassword" />
+        <activity android:name=".my.MyShop" />
+        <activity android:name=".my.MyCattestation" />
+        <activity android:name=".my.MyPattestation" />
+        <activity android:name=".my.MyAttestation" />
+        <activity android:name=".my.MySattestation" />
+        <activity android:name=".order_carrent" />
+        <activity android:name=".lookup.FindingCarStore" />
+        <activity android:name=".order_table" >
+        </activity>
+        <activity android:name=".order_details" >
+        </activity>
+        <activity android:name=".carowner.CarOwnerHtml" >
+        </activity>
     </application>
 
 </manifest>

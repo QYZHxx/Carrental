@@ -33,6 +33,8 @@ public class MyGarage extends Activity {
         this.setContentView(R.layout.my_act_garage);
         initialize();
         back();
+        v();
+
     }
 
     public void initialize(){

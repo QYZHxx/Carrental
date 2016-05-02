@@ -58,14 +58,6 @@ public class car_information extends AppCompatActivity implements View.OnClickLi
         image1=(ImageView)findViewById(R.id.car_image1);
 
         car=(Car)getIntent().getExtras().getSerializable("Car");
-//
-//        bundle.putString("car_name", lists.get(position).getCarName());
-//        bundle.putString("car_price", lists.get(position).getCarRentPrice() + "");
-//        bundle.putString("car_num",lists.get(position).getCarNum());
-//        bundle.putString("car_address", lists.get(position).getCarAddress());
-//        bundle.putString("car_Km",lists.get(position).getCarKm()+" km");
-//        bundle.putString("carage",lists.get(position).getCarAge()+" 年");
-//        bundle.putString("car_sitter",4+"座");
 
         if (car.getCarImage()!=null) {
             String path = car.getCarImage().getUrl() + "";
@@ -100,7 +92,6 @@ public class car_information extends AppCompatActivity implements View.OnClickLi
             it = new Intent(car_information.this, order_carrent.class);
             Bundle bundle = new Bundle();
             bundle.putSerializable("cars", car);
-            System.out.println("传过去名字:" + car.getCarName());
             it.putExtras(bundle);
             startActivity(it);
         }else{
@@ -115,6 +106,7 @@ public class car_information extends AppCompatActivity implements View.OnClickLi
                 public void onClick(DialogInterface dialog, int which) {
                     Intent jump=new Intent(car_information.this,MyRegister.class);
                     startActivity(jump);
+                    finish();
                 }
             });
             builder.setMessage("我们去登陆吧!");
